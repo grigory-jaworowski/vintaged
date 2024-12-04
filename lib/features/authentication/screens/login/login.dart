@@ -6,6 +6,7 @@ import 'package:vintaged/common/widgets/login_signup/form_divider.dart';
 import 'package:vintaged/common/widgets/login_signup/social_buttons.dart';
 import 'package:vintaged/features/authentication/screens/password_config/password_config.dart';
 import 'package:vintaged/features/authentication/screens/signup/signup.dart';
+import 'package:vintaged/home_menu.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 import 'package:vintaged/utils/constants/text_strings.dart';
@@ -69,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: VSizes.spaceBtwSections),
                 
                     //Sign In Button
-                    SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: const Text(VTexts.signIn))),
+                    SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => Get.to(() => const HomeMenu()), child: const Text(VTexts.signIn))),
                     const SizedBox(height: VSizes.spaceBtwItems),
                 
                     //Create Account Button
