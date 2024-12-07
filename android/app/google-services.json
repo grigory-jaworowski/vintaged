@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610225884236",
+    "project_id": "vintaged-71cb1",
+    "storage_bucket": "vintaged-71cb1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610225884236:android:464ad45c60410922fe38e9",
+        "android_client_info": {
+          "package_name": "com.example.vintaged"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHLRMNc4e1X7HQC2poVU_g_YnREzC62is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
