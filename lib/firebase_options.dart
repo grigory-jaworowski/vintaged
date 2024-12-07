@@ -69,6 +69,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '610225884236',
     projectId: 'vintaged-71cb1',
     storageBucket: 'vintaged-71cb1.firebasestorage.app',
+    androidClientId: '610225884236-on6i0nsdlobmin1164fgck1bbsd16ehi.apps.googleusercontent.com',
+    iosClientId: '610225884236-ovplr5oucvnfpb4ruabk2emr6e52mii9.apps.googleusercontent.com',
     iosBundleId: 'com.example.vintaged',
   );
+
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vintaged/features/authentication/screens/login/login.dart';
+import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/theme/theme.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: VAppTheme.vintagedTheme,
-      home: const LoginScreen(),
+      home: const Scaffold(backgroundColor: VColors.primaryBackground, body: Center(child: CircularProgressIndicator(color: VColors.primary))),
     );
   }
 }
