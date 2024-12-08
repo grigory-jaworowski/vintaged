@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/login_signup/form_divider.dart';
 import 'package:vintaged/common/widgets/login_signup/social_buttons.dart';
 import 'package:vintaged/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:vintaged/features/authentication/screens/signup/verify_email.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 import 'package:vintaged/utils/constants/text_strings.dart';
 import 'package:vintaged/utils/validators/validators.dart';
@@ -73,13 +72,20 @@ class VSignUpForm extends StatelessWidget {
           const SizedBox(height: VSizes.spaceBtwInputFields),
     
           // Password
-          TextFormField(
-            validator: (value) => Validator.validatePassword(value),
-            controller: controller.password,
-            expands: false,
-            decoration: const InputDecoration(labelText: VTexts.password,
-            prefixIcon: Icon(Iconsax.call),
-            suffixIcon: Icon(Iconsax.eye_slash)
+          Obx(
+            () => TextFormField(
+              validator: (value) => Validator.validatePassword(value),
+              controller: controller.password,
+              obscureText: controller.hidePassword.value,
+              expands: false,
+              decoration: InputDecoration(
+                labelText: VTexts.password,
+                prefixIcon: const Icon(Iconsax.call),
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye)
+                ),
+              ),
             ),
           ),
           const SizedBox(height: VSizes.spaceBtwInputFields),
@@ -87,7 +93,15 @@ class VSignUpForm extends StatelessWidget {
           // Terms and Conditions Checkbox
           Row(
             children: [
-              SizedBox(width: 24, height: 24, child: Checkbox(value: false, onChanged: (value) {})),
+              SizedBox(width: 24,
+              height: 24,
+              child: Obx(
+                () => Checkbox(
+                  value: controller.privacyPolicy.value,
+                  onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value
+                  ),
+                ),
+              ),
               const SizedBox(width: VSizes.spaceBtwItems),
               Text.rich(
                 TextSpan(
@@ -106,7 +120,7 @@ class VSignUpForm extends StatelessWidget {
           // Create Account Button
           SizedBox(width: double.infinity,
           child: ElevatedButton(
-            onPressed: () => Get.to(() => const VerifyEmailScreen()),
+            onPressed: () => controller.signup(),
             child: const Text(VTexts.createAccount))),
           const SizedBox(height: VSizes.spaceBtwSections),
     
