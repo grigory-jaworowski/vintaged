@@ -29,7 +29,6 @@ class NetworkManager extends GetxController {
   }
 
   /// Check the internet connection status.
-  /// Returns `true` if connected, `false` otherwise.
   Future<bool> isConnected() async {
     try {
       final result = await _connectivity.checkConnectivity();

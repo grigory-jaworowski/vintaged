@@ -4,14 +4,7 @@ import 'package:lottie/lottie.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
-/// A widget for displaying an animated loading indicator with optional text and action button.
 class VAnimationLoaderWidget extends StatelessWidget {
-  /// Parameters:
-  ///   - text: The text to be displayed below the animation.
-  ///   - animation: The path to the Lottie animation file.
-  ///   - showAction: Whether to show an action button below the text.
-  ///   - actionText: The text to be displayed on the action button.
-  ///   - onActionPressed: Callback function to be executed when the action button is pressed.
   const VAnimationLoaderWidget({
     super.key,
     required this.text,
