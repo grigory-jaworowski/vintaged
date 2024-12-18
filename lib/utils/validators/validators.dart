@@ -55,11 +55,11 @@ class Validator {
       return 'Phone number is required.';
     }
 
-    // Regular expression for phone number validation (assuming a 10-digit Spanish phone number format)
+    // Regular expression for phone number validation (assuming a 9-digit Spanish phone number format)
     final phoneRegExp = RegExp(r'^\d{9}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return 'Invalid phone number format (9 digits required).';
     }
 
     return null;

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/login_signup/form_divider.dart';
 import 'package:vintaged/common/widgets/login_signup/social_buttons.dart';
+import 'package:vintaged/common/widgets/login_signup/terms_conditions.dart';
 import 'package:vintaged/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 import 'package:vintaged/utils/constants/text_strings.dart';
@@ -91,30 +92,7 @@ class VSignUpForm extends StatelessWidget {
           const SizedBox(height: VSizes.spaceBtwInputFields),
     
           // Terms and Conditions Checkbox
-          Row(
-            children: [
-              SizedBox(width: 24,
-              height: 24,
-              child: Obx(
-                () => Checkbox(
-                  value: controller.privacyPolicy.value,
-                  onChanged: (value) => controller.privacyPolicy.value = !controller.privacyPolicy.value
-                  ),
-                ),
-              ),
-              const SizedBox(width: VSizes.spaceBtwItems),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: '${VTexts.iAgreeTo} ', style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(text: '${VTexts.privacyPolicy} ', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.blue)),
-                    TextSpan(text: '${VTexts.and} ', style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(text: '${VTexts.termsOfUse} ', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.blue)),
-                  ]
-                )
-              )
-            ],
-          ),
+          const VTermsAndConditionsCheckbox(),
           const SizedBox(height: VSizes.spaceBtwSections),
     
           // Create Account Button
