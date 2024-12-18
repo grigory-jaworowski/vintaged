@@ -17,6 +17,9 @@ class UserModel {
     required this.profilePicture,
   });
 
+  //Helper function to get full name
+  String get fullName => '$firstName $lastName'; 
+
   // Static function to create an empty user model
   static UserModel empty () => UserModel(id: '', firstName: '', lastName: '', username: '', phoneNumber: '', email: '', profilePicture: '');
 

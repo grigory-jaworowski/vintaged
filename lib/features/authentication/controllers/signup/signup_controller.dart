@@ -25,7 +25,7 @@ class SignupController extends GetxController {
   void signup() async {
     try {
       // Start loading
-      VFullScreenLoader.openLoadingDialog('Processing data...', VImages.loadingAnimation);
+      VFullScreenLoader.openLoadingDialog('Processing data...', VImages.docerAnimation);
 
       //Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
@@ -74,7 +74,7 @@ class SignupController extends GetxController {
       VLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been created! Please verify your email to continue.');
 
       // Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       VFullScreenLoader.stopLoading();
 
