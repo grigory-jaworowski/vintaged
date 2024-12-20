@@ -17,6 +17,7 @@ class VSignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignupController());
+    
     return Form(
       key: controller.signupFormKey,
       child: Column(
@@ -101,13 +102,15 @@ class VSignUpForm extends StatelessWidget {
             onPressed: () => controller.signup(),
             child: const Text(VTexts.createAccount))),
           const SizedBox(height: VSizes.spaceBtwSections),
-    
+
+          /*
           // Divider
           const VFormDivider(dividerText: VTexts.orSignInWith),
           const SizedBox(height: VSizes.spaceBtwSections),
           
           // Footer
           const VSocialButtons()
+          */
         ],
       ),
     );
