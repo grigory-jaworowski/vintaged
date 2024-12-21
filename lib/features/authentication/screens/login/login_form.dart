@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/styles/spacing_styles.dart';
-import 'package:vintaged/common/widgets/login_signup/form_divider.dart';
-import 'package:vintaged/common/widgets/login_signup/social_buttons.dart';
 import 'package:vintaged/features/authentication/controllers/login/login_controller.dart';
-import 'package:vintaged/features/authentication/screens/password_config/password_config.dart';
+import 'package:vintaged/features/authentication/screens/password_config/forget_password.dart';
 import 'package:vintaged/features/authentication/screens/signup/signup.dart';
-import 'package:vintaged/home_menu.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 import 'package:vintaged/utils/constants/text_strings.dart';
@@ -90,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                             ],
                           ),
                           // Forget Password
-                          TextButton(onPressed: () => Get.to(() => const ForgetPassword()), child: const Text(VTexts.forgetPassword)),
+                          TextButton(onPressed: () => Get.to(() => const ForgetPasswordScreen()), child: const Text(VTexts.forgetPassword)),
                         ],
                       ),
                       const SizedBox(height: VSizes.spaceBtwSections),

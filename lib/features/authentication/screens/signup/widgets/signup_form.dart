@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vintaged/common/widgets/login_signup/form_divider.dart';
-import 'package:vintaged/common/widgets/login_signup/social_buttons.dart';
 import 'package:vintaged/common/widgets/login_signup/terms_conditions.dart';
 import 'package:vintaged/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:vintaged/utils/constants/sizes.dart';

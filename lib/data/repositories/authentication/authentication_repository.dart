@@ -17,14 +17,17 @@ class AuthenticationRepository extends GetxController {
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
 
+  // Called from main on app launch
   @override
   void onReady() {
     FlutterNativeSplash.remove();
     screenRedirect();
   }
 
+  // Function to determine the relevant screen and redirect accordingly
   screenRedirect() async {
     final user = _auth.currentUser;
+
     if (user != null) {
       if (user.emailVerified) {
         Get.offAll(() => const HomeMenu());
@@ -36,7 +39,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  //Login user
+  // Login user
   Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
     try {
       return await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -53,8 +56,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-
-  //Register user
+  // Register user
   Future<UserCredential> singleFactorAuthentication(String email, String password) async {
     try {
       return await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -71,7 +73,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  //Email verification
+  // Email verification
   Future<void> sendEmailVerification() async {
     try {
       await _auth.currentUser?.sendEmailVerification();
@@ -88,7 +90,24 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  //Logout user
+  // Forget password
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw VFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw VFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const VFormatException();
+    } on PlatformException catch (e) {
+      throw VPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  // Logout user
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
