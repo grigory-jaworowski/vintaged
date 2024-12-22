@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-/// Custom Class Text Theme
 class VTextTheme {
-  VTextTheme._(); // To avoid creating instances
+  VTextTheme._();
 
-  /// Customizable Light Text Theme
   static TextTheme vintagedTextTheme = TextTheme(
     headlineLarge: const TextStyle().copyWith(fontSize: 32.0, fontWeight: FontWeight.bold, color: VColors.dark),
     headlineMedium: const TextStyle().copyWith(fontSize: 24.0, fontWeight: FontWeight.w600, color: VColors.dark),

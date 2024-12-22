@@ -9,7 +9,7 @@ class VTextFormFieldTheme {
     errorMaxLines: 3,
     prefixIconColor: VColors.darkGrey,
     suffixIconColor: VColors.darkGrey,
-    // constraints: const BoxConstraints.expand(height: VSizes.inputFieldHeight),
+    
     labelStyle: const TextStyle().copyWith(fontSize: VSizes.fontSizeMd, color: VColors.black),
     hintStyle: const TextStyle().copyWith(fontSize: VSizes.fontSizeSm, color: VColors.black),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),

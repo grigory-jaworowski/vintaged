@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/sizes.dart';
 
-/* -- Outlined Button Themes -- */
 class VOutlinedButtonTheme {
-  VOutlinedButtonTheme._(); //To avoid creating instances
+  VOutlinedButtonTheme._();
 
   static final vintagedOutlinedButtonTheme  = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(

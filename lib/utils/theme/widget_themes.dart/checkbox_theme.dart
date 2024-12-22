@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/sizes.dart';
 
-/// Custom Class Checkbox Themes
 class VCheckboxTheme {
-  VCheckboxTheme._(); // To avoid creating instances
+  VCheckboxTheme._();
 
   static CheckboxThemeData vintagedCheckboxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(VSizes.xs)),

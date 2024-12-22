@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
-/* -- Elevated Button Theme -- */
 class VElevatedButtonTheme {
-  VElevatedButtonTheme._(); //To avoid creating instances
+  VElevatedButtonTheme._();
 
   static final vintagedElevatedButtonTheme  = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
