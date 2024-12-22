@@ -23,6 +23,7 @@ class VPrimaryHeaderContainer extends StatelessWidget {
               // Custom background shapes
               Positioned(top: -150, right: -250, child: VCircularContainer(backgroundColor: VColors.textWhite.withOpacity(0.1))),
               Positioned(top: 100, right: -300, child: VCircularContainer(backgroundColor: VColors.textWhite.withOpacity(0.1))),
+              child
             ],
           ),
         ),

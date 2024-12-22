@@ -20,10 +20,10 @@ class HomeMenu extends StatelessWidget {
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) => controller.selectedIndex.value = index,
           destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Market'),
-            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
-            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+            NavigationDestination(icon: Icon(Iconsax.home, color: VColors.black), label: 'Home'),
+            NavigationDestination(icon: Icon(Iconsax.shop, color: VColors.black), label: 'Market'),
+            NavigationDestination(icon: Icon(Iconsax.heart, color: VColors.black), label: 'Wishlist'),
+            NavigationDestination(icon: Icon(Iconsax.user, color: VColors.black), label: 'Profile'),
           ]
         ),
       ),
