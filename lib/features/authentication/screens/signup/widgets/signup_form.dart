@@ -44,7 +44,7 @@ class VSignUpForm extends StatelessWidget {
           ),
           const SizedBox(height: VSizes.spaceBtwInputFields),
     
-          //Username
+          // Username
           TextFormField(
             validator: (value) => Validator.validateEmptyText('Username', value),
             controller: controller.username,
