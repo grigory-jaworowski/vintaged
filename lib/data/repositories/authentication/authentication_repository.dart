@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vintaged/features/authentication/screens/login/login_form.dart';
 import 'package:vintaged/features/authentication/screens/signup/verify_email.dart';
-import 'package:vintaged/home_menu.dart';
+import 'package:vintaged/navigation_menu.dart';
 import 'package:vintaged/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:vintaged/utils/exceptions/firebase_exceptions.dart';
 import 'package:vintaged/utils/exceptions/format_exceptions.dart';
@@ -30,7 +30,7 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAll(() => const HomeMenu());
+        Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }

@@ -4,12 +4,12 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/features/shop/screens/home/home.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-class HomeMenu extends StatelessWidget {
-  const HomeMenu({super.key});
+class NavigationMenu extends StatelessWidget {
+  const NavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+    final controller = Get.put(NavigationController());
 
     return Scaffold(
       bottomNavigationBar: Obx(
@@ -32,7 +32,7 @@ class HomeMenu extends StatelessWidget {
   }
 }
 
-class HomeController extends GetxController {
+class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [const HomeScreen(), Container(color: Colors.blue,), Container(color: Colors.blueAccent,), Container(color: Colors.blueGrey,)];
