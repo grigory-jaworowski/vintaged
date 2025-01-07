@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:vintaged/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:vintaged/common/widgets/layouts/grid_layout.dart';
+import 'package:vintaged/common/widgets/products/product_card/product_card.dart';
 import 'package:vintaged/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:vintaged/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:vintaged/features/shop/screens/home/widgets/promo_slider.dart';
@@ -13,11 +15,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            VPrimaryHeaderContainer(
+            const VPrimaryHeaderContainer(
               child: Column(
                 children: [
                   // Appbar
@@ -37,8 +39,15 @@ class HomeScreen extends StatelessWidget {
 
             // Body
             Padding(
-              padding: EdgeInsets.all(VSizes.defaultSpace),
-              child: VPromoSlider(banners: [VImages.promoBanner1, VImages.promoBanner2],),
+              padding: const EdgeInsets.all(VSizes.defaultSpace),
+              child: Column(
+                children: [
+                  const VPromoSlider(banners: [VImages.promoBanner1, VImages.promoBanner2]),
+                  const SizedBox(height: VSizes.spaceBtwSections),
+
+                  VGridLayout(itemCount: 4, itemBuilder: (_, index) => const VProductCard()),
+                ],
+              ),
             )
           ],
         ),

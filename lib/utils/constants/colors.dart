@@ -36,6 +36,7 @@ class VColors {
   static const Color info = Color(0xFF5BC0DE); // Soft blue (vintage calm)
 
   // Neutral Shades
+  static const Color red = Color(0xFFD9534F); // Rich red
   static const Color black = Color(0xFF2C2C2C); // Dark charcoal (classic neutral)
   static const Color darkerGrey = Color(0xFF535353); // Muted grey (aged tone)
   static const Color darkGrey = Color(0xFF787878); // Slightly warm dark grey (retro)

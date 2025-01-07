@@ -7,13 +7,13 @@ class VRoundedImage extends StatelessWidget {
     super.key,
     this.width,
     this.height,
-    required this.imageUrl,
-    this.applyImageRadius = true,
     this.border,
-    this.fit = BoxFit.contain,
     this.padding,
-    this.isNetworkImage = false,
     this.onTap,
+    required this.imageUrl,
+    this.fit = BoxFit.contain,
+    this.isNetworkImage = false,
+    this.applyImageRadius = true,
     this.borderRadius = VSizes.md,
   });
 
@@ -35,10 +35,10 @@ class VRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
-        decoration: BoxDecoration(border: border, color: VColors.light, borderRadius: BorderRadius.circular(borderRadius)),
+        decoration: BoxDecoration(border: border, color: Colors.white, borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
           borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-          child: Image(fit: fit, image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider)
+          child: Image(fit: fit, image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl))
         ),
       ),
     );

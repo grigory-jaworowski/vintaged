@@ -11,4 +11,8 @@ class VImages {
   // Banners
   static const String promoBanner1 = 'assets/images/banners/premium_sales_banner.jpg';
   static const String promoBanner2 = 'assets/images/banners/special_offers_banner.jpg';
+
+  // Products
+  static const String productImage1 = 'assets/images/products/leather_jacket_1.png';
+  static const String productImage2 = 'assets/images/products/Icon_Jacket_1.jpeg';
 }
