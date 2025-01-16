@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:vintaged/common/widgets/icons/circular_icon.dart';
 import 'package:vintaged/common/widgets/image_widgets/rounded_image.dart';
 import 'package:vintaged/common/widgets/texts/product_title_text.dart';
+import 'package:vintaged/features/shop/screens/product_details/product_details.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
@@ -14,7 +16,7 @@ class VProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetails()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -26,11 +28,11 @@ class VProductCard extends StatelessWidget {
           children: [
             const VRoundedContainer(
               height: 180,
-              padding: EdgeInsets.all(1),
+              padding: EdgeInsets.all(VSizes.sm),
               child: Stack(
                 children: [
                   // Thumbnail image
-                  VRoundedImage(imageUrl: VImages.productImage2),
+                  VRoundedImage(image: VImages.productImage2),
                   // Favorite icon button with counter
                   Positioned(
                     top: 0,

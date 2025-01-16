@@ -25,7 +25,7 @@ class VPromoSlider extends StatelessWidget {
               viewportFraction: 1,
               onPageChanged: (index, _) =>
                   controller.updatePageIndicator(index)),
-          items: banners.map((url) => VRoundedImage(imageUrl: url)).toList()
+          items: banners.map((url) => VRoundedImage(image: url)).toList()
         ),
         const SizedBox(height: VSizes.spaceBtwItems),
         Center(

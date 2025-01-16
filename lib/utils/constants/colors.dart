@@ -44,6 +44,7 @@ class VColors {
   static const Color softGrey = Color(0xFFD3D3D3); // Soft light grey (faded tone)
   static const Color lightGrey = Color(0xFFE6E6E6); // Very soft grey (aged paper or fabric)
   static const Color white = Color(0xFFFAF9F6); // White
+  static const Color brown = Color(0xFFAD722D);
 }
 
 

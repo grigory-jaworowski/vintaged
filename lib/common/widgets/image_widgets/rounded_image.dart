@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 class VRoundedImage extends StatelessWidget {
@@ -10,7 +9,7 @@ class VRoundedImage extends StatelessWidget {
     this.border,
     this.padding,
     this.onTap,
-    required this.imageUrl,
+    required this.image,
     this.fit = BoxFit.contain,
     this.isNetworkImage = false,
     this.applyImageRadius = true,
@@ -18,7 +17,7 @@ class VRoundedImage extends StatelessWidget {
   });
 
   final double? width, height;
-  final String imageUrl;
+  final String image;
   final bool applyImageRadius;
   final BoxBorder? border;
   final BoxFit? fit;
@@ -35,10 +34,14 @@ class VRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
-        decoration: BoxDecoration(border: border, color: Colors.white, borderRadius: BorderRadius.circular(borderRadius)),
+        decoration: BoxDecoration(
+          border: border,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(borderRadius)
+        ),
         child: ClipRRect(
           borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
-          child: Image(fit: fit, image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl))
+          child: Image(fit: fit, image: isNetworkImage ? NetworkImage(image) : AssetImage(image))
         ),
       ),
     );

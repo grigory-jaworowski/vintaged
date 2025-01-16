@@ -5,7 +5,8 @@ import 'package:vintaged/utils/constants/colors.dart';
 
 class VPrimaryHeaderContainer extends StatelessWidget {
   const VPrimaryHeaderContainer({
-    super.key, required this.child,
+    super.key,
+    required this.child,
   });
 
   final Widget child;
@@ -16,16 +17,21 @@ class VPrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: VColors.primary,
         padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
-          child: Stack(
-            children: [
-              // Custom background shapes
-              Positioned(top: -150, right: -250, child: VCircularContainer(backgroundColor: VColors.textWhite.withOpacity(0.1))),
-              Positioned(top: 100, right: -300, child: VCircularContainer(backgroundColor: VColors.textWhite.withOpacity(0.1))),
-              child
-            ],
-          ),
+        child: Stack(
+          children: [
+            // Custom background shapes
+            Positioned(
+                top: -150,
+                right: -250,
+                child: VCircularContainer(
+                    backgroundColor: VColors.textWhite.withOpacity(0.1))),
+            Positioned(
+                top: 100,
+                right: -300,
+                child: VCircularContainer(
+                    backgroundColor: VColors.textWhite.withOpacity(0.1))),
+            child
+          ],
         ),
       ),
     );
