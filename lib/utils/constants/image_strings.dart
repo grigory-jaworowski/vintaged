@@ -15,4 +15,11 @@ class VImages {
   // Products
   static const String productImage1 = 'assets/images/products/leather_jacket_1.png';
   static const String productImage2 = 'assets/images/products/Icon_Jacket_1.jpeg';
+
+  // -- Payment Methods
+  static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
+  static const String visa = "assets/icons/payment_methods/visa.png";
+  static const String googlePay = "assets/icons/payment_methods/google-pay.png";
+  static const String creditCard = "assets/icons/payment_methods/credit-card.png";
+  static const String masterCard = "assets/icons/payment_methods/master-card.png";
 }

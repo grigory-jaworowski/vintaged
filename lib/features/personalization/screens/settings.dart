@@ -11,6 +11,7 @@ import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import '../../../utils/constants/image_strings.dart';
+import '../../shop/screens/order/order.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -50,9 +51,18 @@ class SettingsScreen extends StatelessWidget {
                   const VSectionHeading(title: 'Account Settings'),
                   const SizedBox(height: VSizes.spaceBtwItems),
 
-                  const VSettingsMenuTile(icon: Iconsax.safe_home, title: 'My Address', subTitle: 'Set my delivary address'),
+                 const VSettingsMenuTile(
+                    icon: Iconsax.safe_home,
+                    title: 'My Address',
+                    subTitle: 'Set my delivary address',
+                  ),
                   const VSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove items and move to checkout'),
-                  const VSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders'),
+                  VSettingsMenuTile(
+                    icon: Iconsax.bag_tick,
+                    title: 'My Orders',
+                    subTitle: 'In-progress and Completed Orders',
+                    onPressed: () => Get.to(() => const OrderScreen())
+                  ),
                   const VSettingsMenuTile(icon: Iconsax.bank, title: 'Payment', subTitle: 'Add your payment methods'),
 
                   const SizedBox(height: VSizes.spaceBtwSections),

@@ -11,7 +11,7 @@ class VProfileMenu extends StatelessWidget {
   required this.value
   });
 
-  final IconData icon;
+  final IconData? icon;
   final VoidCallback onPressed;
   final String title, value;
 

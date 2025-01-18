@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
-import 'package:vintaged/common/widgets/products/cart/cart_counter_icon.dart';
+import 'package:vintaged/common/widgets/icons/icon_with_counter.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/text_strings.dart';
 
@@ -20,7 +20,7 @@ class VHomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-        VCartCounterIcon(
+        VIconWithCounter(
           onPressed: () {}
         )
       ],

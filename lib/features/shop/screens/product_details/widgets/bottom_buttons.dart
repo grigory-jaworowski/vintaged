@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vintaged/features/shop/screens/payment/payment.dart';
+import 'package:vintaged/features/shop/screens/product_details/widgets/make_offer.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import '../../../../../utils/constants/colors.dart';
+import '../../../../personalization/screens/widgets/profile_menu_detail.dart';
 
 class VBottomButtons extends StatelessWidget {
   const VBottomButtons({
@@ -33,12 +37,13 @@ class VBottomButtons extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const VMakeOffer(data: 'Make an offer',)),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(VSizes.md),
-                  backgroundColor: VColors.brown,
+                  backgroundColor: VColors.white,
+                  foregroundColor: VColors.dark
                 ),
-                child: const Text('Add to Cart')
+                child: const Text('Make Offer'),
               ),
             ),
           ),
@@ -46,20 +51,7 @@ class VBottomButtons extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(VSizes.md),
-                  backgroundColor: VColors.brown,
-                ),
-                child: const Text('Make Offer')
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const PaymentScreen()),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(VSizes.md),
                 ),

@@ -17,7 +17,7 @@ class VProductTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: smallSize ? Theme.of(context).textTheme.labelLarge : Theme.of(context).textTheme.labelSmall,
+      style: smallSize ? Theme.of(context).textTheme.bodyLarge : Theme.of(context).textTheme.labelSmall,
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
       textAlign: textAlign,

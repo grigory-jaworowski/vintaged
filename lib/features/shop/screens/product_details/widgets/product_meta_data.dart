@@ -47,7 +47,7 @@ class VProductMetaData extends StatelessWidget {
             VRoundedContainer(
               radius: 10,
               borderColor: VColors.grey,
-              backgroundColor: VColors.textWhite,
+              backgroundColor: VColors.white,
               padding: const EdgeInsets.all(VSizes.sm),
               child: Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged',
               style: Theme.of(context).textTheme.bodyLarge),

@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-class VCartCounterIcon extends StatelessWidget {
-  const VCartCounterIcon({
+class VIconWithCounter extends StatelessWidget {
+  const VIconWithCounter({
     super.key,
     required this.onPressed,
     this.iconColor = VColors.white,
+    this.icon = Iconsax.notification,
   });
 
   final VoidCallback onPressed;
   final Color? iconColor;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        IconButton(onPressed: onPressed, icon: Icon(Iconsax.shopping_bag, color: iconColor)),
+        IconButton(onPressed: onPressed, icon: Icon(icon, color: iconColor)),
         Positioned(
           right: 0,
           child: Container(

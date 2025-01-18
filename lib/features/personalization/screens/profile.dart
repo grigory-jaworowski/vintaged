@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
 import 'package:vintaged/common/widgets/texts/section_heading.dart';
 import 'package:vintaged/features/personalization/screens/widgets/profile_menu.dart';
@@ -7,6 +8,7 @@ import 'package:vintaged/utils/constants/colors.dart';
 import '../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import 'widgets/profile_menu_detail.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -34,29 +36,30 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               // Details
+              const Divider(),
+              const SizedBox(height: VSizes.spaceBtwItems / 2),
+              const VSectionHeading(title: 'Profile Information', showActionButton: false),
+              const SizedBox(height: VSizes.spaceBtwItems / 2),
+
+              VProfileMenu(title: 'Full Name', value: 'Grigory Volkov', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Full Name'))),
+              VProfileMenu(title: 'Username', value: 'grvo', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Username'))),
+
               const SizedBox(height: VSizes.spaceBtwItems / 2),
               const Divider(),
-              const SizedBox(height: VSizes.spaceBtwItems),
-              const VSectionHeading(title: 'Profile Information', showActionButton: false),
-              const SizedBox(height: VSizes.spaceBtwItems),
-
-              VProfileMenu(title: 'Full Name', value: 'Grigory Volkov', onPressed: () => {}),
-              VProfileMenu(title: 'Username', value: 'grvo', onPressed: () => {}),
-
-              const SizedBox(height: VSizes.spaceBtwItems),
-              const Divider(),
-              const SizedBox(height: VSizes.spaceBtwItems),
+              const SizedBox(height: VSizes.spaceBtwItems / 2),
 
               const VSectionHeading(title: 'Personal Information', showActionButton: false),
-              const SizedBox(height: VSizes.spaceBtwItems),
+              const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              VProfileMenu(title: 'User ID', value: '987654', onPressed: () => {}),
-              VProfileMenu(title: 'E-Mail', value: 'dummy@dummy.com', onPressed: () => {}),
-              VProfileMenu(title: 'Phone Number', value: '321654987', onPressed: () => {}),
-              VProfileMenu(title: 'Gender', value: 'Male', onPressed: () => {}),
-              VProfileMenu(title: 'Date of Birth', value: '21.01.2000', onPressed: () => {}),
+              VProfileMenu(title: 'User ID', value: '987654', onPressed: () => {}, icon: null),
+              VProfileMenu(title: 'E-Mail', value: 'dummy@dummy.com', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
+              VProfileMenu(title: 'Phone Number', value: '321654987', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Phone Number'))),
+              VProfileMenu(title: 'Gender', value: 'Male', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Gender'))),
+              VProfileMenu(title: 'Date of Birth', value: '21.01.2000', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Date of Birth'))),
+              VProfileMenu(title: 'City', value: 'Benidorm', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'City'))),
+              VProfileMenu(title: 'Address line', value: 'Severo Ochoa 29', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Address line'))),
+              VProfileMenu(title: 'Postcode', value: '03503', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Postcode'))),
               const Divider(),
-              const SizedBox(height: VSizes.spaceBtwItems),
 
               Center(
                 child: TextButton(
