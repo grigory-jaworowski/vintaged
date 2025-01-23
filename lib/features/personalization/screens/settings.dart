@@ -48,29 +48,40 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(VSizes.defaultSpace),
               child: Column(
                 children: [
-                  const VSectionHeading(title: 'Account Settings'),
+                  const VSectionHeading(title: 'Account Settings', showActionButton: false),
                   const SizedBox(height: VSizes.spaceBtwItems),
 
                  const VSettingsMenuTile(
-                    icon: Iconsax.safe_home,
-                    title: 'My Address',
-                    subTitle: 'Set my delivary address',
+                    icon: Iconsax.directbox_notif,
+                    title: 'My Items',
+                    subTitle: 'Browse your items for sale',
                   ),
-                  const VSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add, remove items and move to checkout'),
+
                   VSettingsMenuTile(
-                    icon: Iconsax.bag_tick,
+                    icon: Iconsax.shopping_cart,
                     title: 'My Orders',
                     subTitle: 'In-progress and Completed Orders',
                     onPressed: () => Get.to(() => const OrderScreen())
                   ),
-                  const VSettingsMenuTile(icon: Iconsax.bank, title: 'Payment', subTitle: 'Add your payment methods'),
 
+                  const VSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Browse all your notifications'),
+
+                  const VSettingsMenuTile(icon: Iconsax.bank, title: 'Payment', subTitle: 'Add your payment methods'),
+                  
                   const SizedBox(height: VSizes.spaceBtwSections),
+
                   const VSectionHeading(title: 'App Settings', showActionButton: false),
                   const SizedBox(height: VSizes.spaceBtwItems),
+
                   VSettingsMenuTile(
                     icon: Iconsax.location, title: 'Location',
-                    subTitle: 'Set recomendation based on your location',
+                    subTitle: 'Calculate CO2 production based on your current location',
+                    trailing: Switch(value: true, onChanged: (value){}),
+                  ),
+
+                  VSettingsMenuTile(
+                    icon: Iconsax.location, title: 'Notifications',
+                    subTitle: 'Turn on or off notifications from the app',
                     trailing: Switch(value: true, onChanged: (value){}),
                   ),
                 ],

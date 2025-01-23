@@ -10,6 +10,9 @@ import 'package:vintaged/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
+import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../utils/constants/colors.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -44,6 +47,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const VPromoSlider(banners: [VImages.promoBanner1, VImages.promoBanner2]),
                   const SizedBox(height: VSizes.spaceBtwSections),
+
+                  const VSectionHeading(title: 'Popular items', showActionButton: false, textColor: VColors.dark),
+                  const SizedBox(height: VSizes.spaceBtwItems),
 
                   VGridLayout(itemCount: 4, itemBuilder: (_, index) => const VProductCard()),
                 ],

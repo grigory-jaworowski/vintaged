@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
-
-import '../../../../../common/widgets/image_widgets/circular_image.dart';
-import '../../../../../utils/constants/image_strings.dart';
-import '../../../../personalization/screens/profile.dart';
 
 class VProductMetaData extends StatelessWidget {
   const VProductMetaData({super.key});

@@ -6,6 +6,9 @@ import 'package:vintaged/features/shop/screens/home/home.dart';
 import 'package:vintaged/features/shop/screens/wishlist/wishlist.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
+import 'features/shop/screens/add_item/add_item.dart';
+import 'features/shop/screens/categories/categories.dart';
+
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
@@ -24,6 +27,7 @@ class NavigationMenu extends StatelessWidget {
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home, color: VColors.black), label: 'Home'),
             NavigationDestination(icon: Icon(Iconsax.shop, color: VColors.black), label: 'Market'),
+            NavigationDestination(icon: Icon(Iconsax.add_circle, color: VColors.black), label: 'Sell'),
             NavigationDestination(icon: Icon(Iconsax.heart, color: VColors.black), label: 'Wishlist'),
             NavigationDestination(icon: Icon(Iconsax.user, color: VColors.black), label: 'Profile'),
           ]
@@ -36,6 +40,6 @@ class NavigationMenu extends StatelessWidget {
 
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
-
-  final screens = [const HomeScreen(), Container(color: Colors.blue,), const WishlistScreen(), const SettingsScreen()];
+  
+  final screens = [const HomeScreen(), const CategoriesScreen(), const AddItem(), const WishlistScreen(), const SettingsScreen()];
 }

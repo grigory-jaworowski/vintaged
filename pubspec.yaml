@@ -40,4 +40,5 @@ flutter:
     - assets/images/banners/
     - assets/images/products/
     - assets/icons/
+    - assets/icons/shop/
     - assets/icons/payment_methods/
