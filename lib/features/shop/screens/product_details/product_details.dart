@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -45,14 +44,9 @@ class ProductDetails extends StatelessWidget {
                   const VCO2AddToCart(),
                   const Divider(color: VColors.grey),
 
-                  // Price, Title, Brand, Description
+                  // Price, Title, Description
                   const VProductMetaData(),
 
-                  // Attributes
-
-                  // Checkout button & Make an offer button
-
-                  // Reviews
                 ],
               ),
             )

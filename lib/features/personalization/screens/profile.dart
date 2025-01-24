@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
 import 'package:vintaged/common/widgets/texts/section_heading.dart';
 import 'package:vintaged/features/personalization/screens/widgets/profile_menu.dart';
@@ -8,6 +9,8 @@ import 'package:vintaged/utils/constants/colors.dart';
 import '../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
+import '../controllers/user_controller.dart';
+import 'widgets/change_fullname.dart';
 import 'widgets/profile_menu_detail.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -15,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
        appBar: const VAppBar(showBackArrow: true, title: Text('Profile')),
 
@@ -41,8 +45,8 @@ class ProfileScreen extends StatelessWidget {
               const VSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              VProfileMenu(title: 'Full Name', value: 'Grigory Volkov', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Full Name'))),
-              VProfileMenu(title: 'Username', value: 'grvo', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Username'))),
+              VProfileMenu(title: 'Full Name', value: controller.user.value.fullName, onPressed: () => Get.to(() => const ChangeFullname())),
+              VProfileMenu(title: 'Username', value: controller.user.value.username, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Username'))),
 
               const SizedBox(height: VSizes.spaceBtwItems / 2),
               const Divider(),
@@ -51,9 +55,9 @@ class ProfileScreen extends StatelessWidget {
               const VSectionHeading(title: 'Personal Information', showActionButton: false),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              VProfileMenu(title: 'User ID', value: '987654', onPressed: () => {}, icon: null),
-              VProfileMenu(title: 'E-Mail', value: 'dummy@dummy.com', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
-              VProfileMenu(title: 'Phone Number', value: '321654987', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Phone Number'))),
+              VProfileMenu(title: 'User ID', value: controller.user.value.id, onPressed: () => {}, icon: Iconsax.copy),
+              VProfileMenu(title: 'E-Mail', value: controller.user.value.email, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
+              VProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Phone Number'))),
               VProfileMenu(title: 'Gender', value: 'Male', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Gender'))),
               VProfileMenu(title: 'Date of Birth', value: '21.01.2000', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Date of Birth'))),
               VProfileMenu(title: 'City', value: 'Benidorm', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'City'))),
@@ -63,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text('Delete Account', style: TextStyle(color: VColors.red))
                 ),
               )

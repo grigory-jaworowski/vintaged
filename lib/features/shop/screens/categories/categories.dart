@@ -6,7 +6,6 @@ import 'package:vintaged/utils/constants/image_strings.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../personalization/screens/profile.dart';
 import 'sub_categories.dart';
 import 'widgets/category_item.dart';
 

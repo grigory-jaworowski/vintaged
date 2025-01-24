@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
-import '../../../../../common/widgets/custom_shapes/curved_edges/curved_edges_widgets.dart';
-import '../../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../../common/widgets/image_widgets/rounded_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../common/widgets/success_screen/success_screen.dart';
 import '../../../../navigation_menu.dart';
-import '../../../../utils/constants/text_strings.dart';
 
 class AddItem extends StatelessWidget {
   const AddItem({

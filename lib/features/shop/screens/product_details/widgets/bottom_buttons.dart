@@ -5,7 +5,6 @@ import 'package:vintaged/features/shop/screens/product_details/widgets/make_offe
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import '../../../../../utils/constants/colors.dart';
-import '../../../../personalization/screens/widgets/profile_menu_detail.dart';
 
 class VBottomButtons extends StatelessWidget {
   const VBottomButtons({
