@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vintaged/data/repositories/authentication/authentication_repository.dart';
 import 'package:vintaged/data/repositories/user/user_repository.dart';
 import 'package:vintaged/features/authentication/models/user_model.dart';
@@ -21,6 +22,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
 
   final hidePassword = true.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -105,6 +107,28 @@ class UserController extends GetxController {
       VFullScreenLoader.stopLoading();
       VLoaders.warningSnackBar(
           title: 'Unexpected error!', message: e.toString());
+    }
+  }
+
+  uploadProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxHeight: 512, maxWidth: 512);
+      if (image != null) {
+        imageUploading.value = true;
+        // Upload image
+        final imageUrl = await userRepository.uploadImage('Users/Images/Profile/', image);
+        // Update user image record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        VLoaders.successSnackBar(title: 'Congratulations!', message: 'Your profile image has been updated!');
+      }
+    } catch (e) {
+      VLoaders.errorSnackBar(title: 'Unexpected Error!', message: 'Something went wrong: $e');
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

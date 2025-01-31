@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
+import 'package:vintaged/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:vintaged/common/widgets/texts/section_heading.dart';
 import 'package:vintaged/features/personalization/screens/widgets/profile_menu.dart';
 import 'package:vintaged/utils/constants/colors.dart';
@@ -20,10 +21,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return Scaffold(
-       appBar: const VAppBar(showBackArrow: true, title: Text('Profile')),
+      appBar: const VAppBar(showBackArrow: true, title: Text('Profile')),
 
-       // Body
-       body: SingleChildScrollView(
+      // Body
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(VSizes.defaultSpace),
           child: Column(
@@ -33,8 +34,24 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const VCircularImage(image: VImages.testAppLogo, width: 80, height: 80),
-                    TextButton(onPressed: () {}, child: const Text('Change Profile Picture'))
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : VImages.userIcon;
+
+                      return controller.imageUploading.value
+                          ? const VShimmerEffect(
+                              width: 80, height: 80, radius: 80)
+                          : VCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(
+                        onPressed: () => controller.uploadProfilePicture(),
+                        child: const Text('Change Profile Picture'))
                   ],
                 ),
               ),
@@ -42,40 +59,80 @@ class ProfileScreen extends StatelessWidget {
               // Details
               const Divider(),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
-              const VSectionHeading(title: 'Profile Information', showActionButton: false),
+              const VSectionHeading(
+                  title: 'Profile Information', showActionButton: false),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              VProfileMenu(title: 'Full Name', value: controller.user.value.fullName, onPressed: () => Get.to(() => const ChangeFullname())),
-              VProfileMenu(title: 'Username', value: controller.user.value.username, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Username'))),
+              VProfileMenu(
+                  title: 'Full Name',
+                  value: controller.user.value.fullName,
+                  onPressed: () => Get.to(() => const ChangeFullname())),
+              VProfileMenu(
+                  title: 'Username',
+                  value: controller.user.value.username,
+                  onPressed: () =>
+                      Get.to(() => const VProfileMenuDetail(data: 'Username'))),
 
               const SizedBox(height: VSizes.spaceBtwItems / 2),
               const Divider(),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              const VSectionHeading(title: 'Personal Information', showActionButton: false),
+              const VSectionHeading(
+                  title: 'Personal Information', showActionButton: false),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
-              VProfileMenu(title: 'User ID', value: controller.user.value.id, onPressed: () => {}, icon: Iconsax.copy),
-              VProfileMenu(title: 'E-Mail', value: controller.user.value.email, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
-              VProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Phone Number'))),
-              VProfileMenu(title: 'Gender', value: 'Male', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Gender'))),
-              VProfileMenu(title: 'Date of Birth', value: '21.01.2000', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Date of Birth'))),
-              VProfileMenu(title: 'City', value: 'Benidorm', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'City'))),
-              VProfileMenu(title: 'Address line', value: 'Severo Ochoa 29', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Address line'))),
-              VProfileMenu(title: 'Postcode', value: '03503', onPressed: () => Get.to(() => const VProfileMenuDetail(data: 'Postcode'))),
+              VProfileMenu(
+                  title: 'User ID',
+                  value: controller.user.value.id,
+                  onPressed: () => {},
+                  icon: Iconsax.copy),
+              VProfileMenu(
+                  title: 'E-Mail',
+                  value: controller.user.value.email,
+                  onPressed: () =>
+                      Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
+              VProfileMenu(
+                  title: 'Phone Number',
+                  value: controller.user.value.phoneNumber,
+                  onPressed: () => Get.to(
+                      () => const VProfileMenuDetail(data: 'Phone Number'))),
+              VProfileMenu(
+                  title: 'Gender',
+                  value: 'Male',
+                  onPressed: () =>
+                      Get.to(() => const VProfileMenuDetail(data: 'Gender'))),
+              VProfileMenu(
+                  title: 'Date of Birth',
+                  value: '21.01.2000',
+                  onPressed: () => Get.to(
+                      () => const VProfileMenuDetail(data: 'Date of Birth'))),
+              VProfileMenu(
+                  title: 'City',
+                  value: 'Benidorm',
+                  onPressed: () =>
+                      Get.to(() => const VProfileMenuDetail(data: 'City'))),
+              VProfileMenu(
+                  title: 'Address line',
+                  value: 'Severo Ochoa 29',
+                  onPressed: () => Get.to(
+                      () => const VProfileMenuDetail(data: 'Address line'))),
+              VProfileMenu(
+                  title: 'Postcode',
+                  value: '03503',
+                  onPressed: () =>
+                      Get.to(() => const VProfileMenuDetail(data: 'Postcode'))),
               const Divider(),
 
               Center(
                 child: TextButton(
-                  onPressed: () => controller.deleteAccountWarningPopup(),
-                  child: const Text('Delete Account', style: TextStyle(color: VColors.red))
-                ),
+                    onPressed: () => controller.deleteAccountWarningPopup(),
+                    child: const Text('Delete Account',
+                        style: TextStyle(color: VColors.red))),
               )
             ],
           ),
         ),
-
-       ),
+      ),
     );
   }
 }

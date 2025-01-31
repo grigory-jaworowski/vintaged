@@ -11,6 +11,7 @@ import 'package:vintaged/features/personalization/screens/profile.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
+import '../../../common/widgets/shimmers/shimmer_effect.dart';
 import '../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../shop/screens/order/order.dart';
@@ -35,7 +36,19 @@ class SettingsScreen extends StatelessWidget {
 
                   // User Profile Card
                   ListTile(
-                    leading: const VCircularImage(image: VImages.testAppLogo),
+                    leading: Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty
+                          ? networkImage
+                          : VImages.userIcon;
+
+                      return controller.imageUploading.value
+                          ? const VShimmerEffect(
+                              width: 50, height: 50, radius: 50)
+                          : VCircularImage(
+                              image: image,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: VColors.white)),
                     subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: VColors.white)),
                     trailing: IconButton(

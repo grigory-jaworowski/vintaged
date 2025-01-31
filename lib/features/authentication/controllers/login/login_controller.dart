@@ -20,35 +20,35 @@ class LoginController extends GetxController {
   Future<void> emailAndPasswordSignIn() async {
     try {
       // Start loading
-    VFullScreenLoader.openLoadingDialog('Signing-in', VImages.docerAnimation);
+      VFullScreenLoader.openLoadingDialog('Signing-in', VImages.docerAnimation);
 
-    // Check internet connection
-    final isConnected = await NetworkManager.instance.isConnected();
-    if (!isConnected) {
+      // Check internet connection
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        VFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // Form validation
+      if (!loginFormKey.currentState!.validate()) {
+        VFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // Save data if Remember Me is selected
+      if (rememberMe.value) {
+        deviceStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
+        deviceStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
+      }
+
+      // Login user with email and password
+      await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+
+      // Remove Loader
       VFullScreenLoader.stopLoading();
-      return;
-    }
 
-    // Form validation
-    if (!loginFormKey.currentState!.validate()) {
-      VFullScreenLoader.stopLoading();
-      return;
-    }
-
-    // Save data if Remember Me is selected
-    if (rememberMe.value) {
-      deviceStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
-      deviceStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
-    }
-
-    // Login user with email and password
-    await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
-
-    // Remove Loader
-    VFullScreenLoader.stopLoading();
-
-    // Redirect
-    AuthenticationRepository.instance.screenRedirect();
+      // Redirect
+      AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       VFullScreenLoader.stopLoading();
       VLoaders.errorSnackBar(title: 'Unexpected error!', message: e.toString());

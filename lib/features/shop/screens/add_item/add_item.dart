@@ -58,22 +58,56 @@ class AddItem extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: VSizes.spaceBtwInputFields),
-            const Divider(thickness: 1, color: VColors.dark),
-            const SizedBox(height: VSizes.spaceBtwInputFields),
+            const SizedBox(height: VSizes.spaceBtwSections),
             
-            const Text('Title'),
             TextFormField(
               expands: false,
-              decoration: const InputDecoration(),
+              decoration: const InputDecoration(
+                labelText: 'Title'
+              ),
             ),
 
             const SizedBox(height: VSizes.spaceBtwInputFields),
 
-            const Text('Description'),
             TextFormField(
               expands: false,
-              decoration: const InputDecoration(),
+              minLines: 3,
+              maxLines: 5,
+              
+              decoration: const InputDecoration(
+                alignLabelWithHint: true,
+
+                labelText: 'Description'
+              ),
+            ),
+
+            const SizedBox(height: VSizes.spaceBtwInputFields),
+            const Divider(thickness: 1, color: VColors.dark),
+            const SizedBox(height: VSizes.spaceBtwInputFields),
+
+            TextFormField(
+              expands: false,
+              decoration: const InputDecoration(
+                labelText: 'Brand'
+              ),
+            ),
+
+            const SizedBox(height: VSizes.spaceBtwInputFields),
+
+            TextFormField(
+              expands: false,
+              decoration: const InputDecoration(
+                labelText: 'Size'
+              ),
+            ),
+
+            const SizedBox(height: VSizes.spaceBtwInputFields),
+
+            TextFormField(
+              expands: false,
+              decoration: const InputDecoration(
+                labelText: 'Condition'
+              ),
             ),
 
             const SizedBox(height: VSizes.spaceBtwInputFields),
@@ -82,7 +116,7 @@ class AddItem extends StatelessWidget {
 
             DropdownButtonFormField(
               decoration:
-                  const InputDecoration(hintText: 'Choose main category'),
+                  const InputDecoration(labelText: 'Main Category'),
               onChanged: (value) {},
               items: ['Clothes', 'Shoes', 'Accessories']
                   .map((option) =>
@@ -94,7 +128,7 @@ class AddItem extends StatelessWidget {
 
             DropdownButtonFormField(
               decoration:
-                  const InputDecoration(hintText: 'Choose sub-category'),
+                  const InputDecoration(labelText: 'Sub-Category'),
               onChanged: (value) {},
               items: ['Clothes', 'Shoes', 'Accessories']
                   .map((option) =>
@@ -106,15 +140,13 @@ class AddItem extends StatelessWidget {
             const Divider(thickness: 1, color: VColors.dark),
             const SizedBox(height: VSizes.spaceBtwInputFields),
 
-            const Text('Price'),
             TextFormField(
               expands: false,
-              decoration: const InputDecoration(),
+              decoration: const InputDecoration(labelText: 'Price'),
             ),
             
-            const SizedBox(height: VSizes.spaceBtwInputFields),
-            const Divider(thickness: 1, color: VColors.dark),
-            const SizedBox(height: VSizes.spaceBtwInputFields),
+            const SizedBox(height: VSizes.spaceBtwSections),
+            
 
             SizedBox(
               width: double.infinity,

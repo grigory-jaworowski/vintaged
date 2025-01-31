@@ -4,6 +4,8 @@ import 'package:vintaged/common/widgets/layouts/grid_layout.dart';
 import 'package:vintaged/common/widgets/products/product_card/product_card.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
+import '../../models/product_model.dart';
+
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
 
@@ -11,6 +13,7 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: VAppBar(
+        showBackArrow: true,
         title: Text('Whishlist', style: Theme.of(context).textTheme.headlineMedium),
       ),
 
@@ -19,7 +22,7 @@ class WishlistScreen extends StatelessWidget {
           padding: const EdgeInsets.all(VSizes.defaultSpace),
           child: Column(
             children: [
-              VGridLayout(itemCount: 8, itemBuilder: (_,index) => const VProductCard())
+              VGridLayout(itemCount: 8, itemBuilder: (_,index) => VProductCard(product: ProductModel.empty()))
             ],
           ),
         ),

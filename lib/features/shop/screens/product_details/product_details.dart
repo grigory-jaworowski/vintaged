@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vintaged/features/shop/models/product_model.dart';
 import '../../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_strings.dart';
@@ -11,7 +12,9 @@ import 'widgets/product_detail_image_slider.dart';
 import 'widgets/product_meta_data.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  const ProductDetails({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

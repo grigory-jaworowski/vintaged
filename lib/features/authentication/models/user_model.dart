@@ -8,6 +8,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
+  List<String>? products;
 
   UserModel({
     required this.id,
@@ -17,6 +18,7 @@ class UserModel {
     required this.phoneNumber,
     required this.email,
     required this.profilePicture,
+    this.products,
   });
 
   // Helper function to get full name
@@ -26,7 +28,7 @@ class UserModel {
   static List<String> nameParts(fullName) => fullName.split(" ");
 
   // Static function to create an empty user model
-  static UserModel empty () => UserModel(id: '', firstName: '', lastName: '', username: '', phoneNumber: '', email: '', profilePicture: '');
+  static UserModel empty () => UserModel(id: '', firstName: '', lastName: '', username: '', phoneNumber: '', email: '', profilePicture: '', products: []);
 
   // Convert model to JSON structure for storing data in Firebase
   Map<String, dynamic> toJson() {
@@ -37,6 +39,7 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Products': products
     };
   }
 
@@ -51,7 +54,8 @@ class UserModel {
         username: data['UserName'] ?? '',
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
-        profilePicture: data['ProfilePicture'] ?? ''
+        profilePicture: data['ProfilePicture'] ?? '',
+        products: data['Products'] ?? []
       );
     } else {
       return UserModel.empty();

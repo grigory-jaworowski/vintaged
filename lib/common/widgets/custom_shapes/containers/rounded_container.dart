@@ -30,7 +30,7 @@ class VRoundedContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: borderColor)
+        border: Border.all(color: borderColor, width: 1)
       ),
       child: child,
     );
