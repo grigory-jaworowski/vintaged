@@ -59,7 +59,7 @@ class UpdateNameController extends GetxController{
       VFullScreenLoader.stopLoading();
 
       // Show success message
-      VLoaders.successSnackBar(title: 'Congratulations!', message: 'Your name has updated successfully!');
+      VLoaders.successSnackBar(title: 'Congratulations!', message: 'Your name has been updated successfully!');
 
       // Move to previous screen
       Get.off(() => const ProfileScreen());

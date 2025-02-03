@@ -6,7 +6,7 @@ import 'package:vintaged/features/shop/screens/home/home.dart';
 import 'package:vintaged/features/shop/screens/wishlist/wishlist.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-import 'features/shop/screens/add_item/add_item.dart';
+import 'features/shop/screens/sell_product/sell_product.dart';
 import 'features/shop/screens/categories/categories.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -41,5 +41,5 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   
-  final screens = [const HomeScreen(), const CategoriesScreen(), const AddItem(), const WishlistScreen(), const SettingsScreen()];
+  final screens = [const HomeScreen(), const CategoriesScreen(), const SellProduct(), const WishlistScreen(), const SettingsScreen()];
 }

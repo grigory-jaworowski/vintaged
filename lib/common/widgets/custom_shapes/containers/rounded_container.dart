@@ -11,7 +11,7 @@ class VRoundedContainer extends StatelessWidget {
   this.child,
   this.radius = VSizes.cardRadiusLg,
   this.backgroundColor = Colors.white,
-  this.borderColor = VColors.borderPrimary,
+  this.borderColor = VColors.brown,
   });
 
   final double? width, height;

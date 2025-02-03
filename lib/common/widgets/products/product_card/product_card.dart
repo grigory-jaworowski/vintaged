@@ -26,17 +26,18 @@ class VProductCard extends StatelessWidget {
         padding: EdgeInsets.zero,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(VSizes.productImageRadius),
-          color: Colors.white
+          color: Colors.white,
         ),
         child:  Column(
           children: [
             VRoundedContainer(
-              height: 190,
-              padding: const EdgeInsets.all(0),
+              height: 200,
+              width: 180,
+              padding: EdgeInsets.zero,
               child: Stack(
                 children: [
                   // Thumbnail image
-                  VRoundedImage(image: product.images[0], applyImageRadius: true, isNetworkImage: true),
+                  Positioned.fill(child: VRoundedImage(image: product.images[0], applyImageRadius: true, isNetworkImage: true)),
                   // Favorite icon button with counter
                   const Positioned(
                     top: 0,
@@ -47,10 +48,9 @@ class VProductCard extends StatelessWidget {
               ),
             ),
       
-            const SizedBox(height: VSizes.spaceBtwItems / 4),
       
             Padding(
-              padding: const EdgeInsets.only(left: VSizes.sm),
+              padding: const EdgeInsets.all(VSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

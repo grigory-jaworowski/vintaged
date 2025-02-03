@@ -1,8 +1,24 @@
+import '../../features/shop/models/category_model.dart';
+
 class Validator {
   //Empty text validation
-  static String? validateEmptyText (String? fieldName, String? value) {
+  static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return '$fieldName is required';
+    }
+    return null;
+  }
+
+  static String? validateCategories(String? fieldName, CategoryModel? value) {
+    if (value == null) {
+      return 'Please select $fieldName';
+    }
+    return null;
+  }
+
+  static String? validateCondition(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please select $fieldName';
     }
     return null;
   }
@@ -66,8 +82,8 @@ class Validator {
   }
 
   //Empty text, right amount
-  static String? validateOffer (String? fieldName, String? value) {
-    if (value == null || value.isEmpty ) {
+  static String? validateOffer(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
       return '$fieldName is required';
     }
     final amountRegExp = RegExp(r'^\d{3}$');

@@ -8,7 +8,7 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
-  List<String>? products;
+  final List<String>? products;
 
   UserModel({
     required this.id,
@@ -28,7 +28,15 @@ class UserModel {
   static List<String> nameParts(fullName) => fullName.split(" ");
 
   // Static function to create an empty user model
-  static UserModel empty () => UserModel(id: '', firstName: '', lastName: '', username: '', phoneNumber: '', email: '', profilePicture: '', products: []);
+  static UserModel empty() => UserModel(
+      id: '',
+      firstName: '',
+      lastName: '',
+      username: '',
+      phoneNumber: '',
+      email: '',
+      profilePicture: '',
+      products: []);
 
   // Convert model to JSON structure for storing data in Firebase
   Map<String, dynamic> toJson() {
@@ -44,19 +52,19 @@ class UserModel {
   }
 
   // Method to create a UserModel from a Firebase document snapshot
-  factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
       return UserModel(
-        id: document.id,
-        firstName: data['FirstName'] ?? '',
-        lastName: data['LastName'] ?? '',
-        username: data['UserName'] ?? '',
-        email: data['Email'] ?? '',
-        phoneNumber: data['PhoneNumber'] ?? '',
-        profilePicture: data['ProfilePicture'] ?? '',
-        products: data['Products'] ?? []
-      );
+          id: document.id,
+          firstName: data['FirstName'] ?? '',
+          lastName: data['LastName'] ?? '',
+          username: data['UserName'] ?? '',
+          email: data['Email'] ?? '',
+          phoneNumber: data['PhoneNumber'] ?? '',
+          profilePicture: data['ProfilePicture'] ?? '',
+          products: data['Products'] != null ? List<String>.from(data['Products']) : []);
     } else {
       return UserModel.empty();
     }

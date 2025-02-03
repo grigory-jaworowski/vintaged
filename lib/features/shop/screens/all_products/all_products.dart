@@ -9,7 +9,6 @@ import 'package:vintaged/features/shop/models/product_model.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/shimmers/vertical_shimmer.dart';
-import '../../../../utils/device/device_utility.dart';
 import '../../../../utils/helpers/cloud_helper_functions.dart';
 import '../../controllers/all_products_controller.dart';
 

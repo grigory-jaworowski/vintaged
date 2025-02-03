@@ -5,7 +5,7 @@ class VGridLayout extends StatelessWidget {
   const VGridLayout({
     super.key,
     required this.itemCount,
-    this.mainAxisExtent = 235,
+    this.mainAxisExtent = 253,
     required this.itemBuilder,
   });
 

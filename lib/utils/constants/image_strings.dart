@@ -2,11 +2,13 @@ class VImages {
   static const String testAppLogo = 'assets/logos/test-logo.png';
   static const String googleIcon = 'assets/logos/google-icon.png';
   static const String facebookIcon = 'assets/logos/facebook-icon.png';
-static const String userIcon = 'assets/logos/user.png';
+  static const String userIcon = 'assets/logos/user.png';
+
   // Animations
   static const String loadingAnimation = 'assets/images/animations/loader-animation.json';
   static const String docerAnimation = 'assets/images/animations/141594-animation-of-docer.json';
   static const String successfulAnimation = 'assets/images/animations/141397-loading-juggle.json';
+  static const String emptyImage = 'assets/images/animations/empty-image.jpg';
 
   // Banners
   static const String promoBanner1 = 'assets/images/banners/premium_sales_banner.jpg';

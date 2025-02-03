@@ -13,6 +13,8 @@ class CategoryController extends GetxController {
   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> parentCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> subCategories = <CategoryModel>[].obs;
+  Rx<CategoryModel?> selectedParentCategory = Rx<CategoryModel?>(null);
+  Rx<CategoryModel?> selectedSubCategory = Rx<CategoryModel?>(null);
 
   @override
   void onInit() {
@@ -33,24 +35,34 @@ class CategoryController extends GetxController {
       allCategories.assignAll(categories);
 
       // Filter categories
-      featuredCategories.assignAll(allCategories.where((category) => category.isFeatured).take(7).toList());
+      featuredCategories.assignAll(allCategories
+          .where((category) => category.isFeatured)
+          .take(7)
+          .toList());
 
-      parentCategories.assignAll(allCategories.where((category) => category.parendId.isEmpty));
+      parentCategories.assignAll(
+          allCategories.where((category) => category.parendId.isEmpty));
     } catch (e) {
-      VLoaders.errorSnackBar(title: 'Unexpected Error!', message: 'Something went wrong: $e');
+      VLoaders.errorSnackBar(
+          title: 'Unexpected Error!', message: 'Something went wrong: $e');
     } finally {
       isLoading.value = false;
     }
   }
 
-  void fetchSubCategories(String subCategoryId) {
-    try {
-      subCategories.assignAll(allCategories.where((category) => category.id.startsWith(subCategoryId) && category.parendId.isNotEmpty));
-    } catch (e) {
-      VLoaders.errorSnackBar(title: 'Unexpected Error!', message: 'Something went wrong: $e');
-    } finally {
-      isLoading.value = false;
-    }
+  // Fetch subcategories based on selected parent category
+  void fetchSubCategories(String categoryId) {
+    subCategories.assignAll(allCategories.where((category) =>
+        category.id.startsWith(categoryId) && category.parendId.isNotEmpty));
   }
 
+  // Handle parent category selection
+  void selectParentCategory(CategoryModel? category) {
+    selectedParentCategory.value = category;
+    selectedSubCategory.value = null;
+    subCategories.clear();
+    if (category != null) {
+      fetchSubCategories(category.id);
+    }
+  }
 }

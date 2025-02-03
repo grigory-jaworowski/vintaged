@@ -35,9 +35,12 @@ class UserRepository extends GetxController {
     }
   }
 
-  Future<UserModel> fetchUserDetails () async {
+  Future<UserModel> fetchUserDetails() async {
     try {
-      final documentSnapshot = await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).get();
+      final documentSnapshot = await _db
+          .collection("Users")
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .get();
       if (documentSnapshot.exists) {
         return UserModel.fromSnapshot(documentSnapshot);
       } else {
@@ -59,7 +62,10 @@ class UserRepository extends GetxController {
   // Function to update user data in Firestore
   Future<void> updateUserDetails(UserModel updatedUser) async {
     try {
-      await _db.collection("Users").doc(updatedUser.id).update(updatedUser.toJson());
+      await _db
+          .collection("Users")
+          .doc(updatedUser.id)
+          .update(updatedUser.toJson());
     } on FirebaseAuthException catch (e) {
       throw VFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -76,7 +82,33 @@ class UserRepository extends GetxController {
   // Update single field
   Future<void> updateSingleField(Map<String, dynamic> json) async {
     try {
-      await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).update(json);
+      await _db
+          .collection("Users")
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .update(json);
+    } on FirebaseAuthException catch (e) {
+      throw VFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw VFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const VFormatException();
+    } on PlatformException catch (e) {
+      throw VPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  // Add newly created product to user profile
+  Future<void> addUserProduct(String productId) async {
+    try {
+      await _db
+          .collection("Users")
+          .doc(AuthenticationRepository.instance.authUser?.uid)
+          .update({
+        'Products':
+            FieldValue.arrayUnion([productId])
+      });
     } on FirebaseAuthException catch (e) {
       throw VFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
