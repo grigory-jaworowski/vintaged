@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                               Obx(
                                 () => Checkbox(
                                   value: controller.rememberMe.value,
-                                  onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value
+                                  onChanged: (value) => controller.rememberMe.value = value!
                                 ),
                               ),
                               const Text(VTexts.rememberMe),

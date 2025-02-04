@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: VSizes.spaceBtwItems),
                   Obx(() {
                     if (controller.isLoading.value) {
-                      return const VerticalProductShimmer(itemCount: 1);
+                      return const VerticalProductShimmer(itemCount: 2);
                     }
 
                     if (controller.popularProducts.isEmpty) {

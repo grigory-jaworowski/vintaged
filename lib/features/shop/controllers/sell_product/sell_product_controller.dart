@@ -6,6 +6,7 @@ import 'package:vintaged/features/shop/controllers/product/product_images_contro
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../data/repositories/products/product_repository.dart';
 import '../../../../data/repositories/user/user_repository.dart';
+import '../../../../data/services/climatiq_api_service.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
@@ -26,13 +27,15 @@ class SellProductController extends GetxController {
   Rx<String?> selectedCondition = Rx<String?>(null);
 
   final categoryController = CategoryController.instance;
-  final imagesController = ProductImagesController.instance;
+  final imagesController = Get.put(ProductImagesController());
 
   // Controllers and keys
   final productRepository = Get.put(ProductRepository());
   final dropdownsFormKey = GlobalKey<FormState>();
   final attributesFormKey = GlobalKey<FormState>();
   final titleDescriptionFormKey = GlobalKey<FormState>();
+
+  final ClimatiqApiService climatiqApiService = ClimatiqApiService();
 
   Future<void> createProduct() async {
     try {
@@ -67,14 +70,19 @@ class SellProductController extends GetxController {
         VFullScreenLoader.stopLoading();
         return;
       }
-
+      
+      // Upload images
       final images = await productRepository.uploadMultipleImages(
           'Users/Images/Profile/', imagesController.productImages);
+
+      // Call ClimatiqApiService
+      double co2Estimate = await climatiqApiService.estimateCO2(weight: double.tryParse(weight.text.trim()) ?? 0);
+
 
       // Map Product Data to ProductModel
       final newProduct = ProductModel(
         id: '',
-        co2: 0,
+        co2: co2Estimate,
         title: title.text.trim(),
         brand: brand.text.trim(),
         description: description.text.trim(),

@@ -39,7 +39,7 @@ class AllProducts extends StatelessWidget {
             future: futureMethod ?? controller.fetchProductsByQuery(query),
             builder: (_, snapshot) {
               // Check the state of the FutureBuilder snapshot
-              const loader = VerticalProductShimmer(itemCount: 4);
+              const loader = VerticalProductShimmer(itemCount: 6);
               final widget = VCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot, loader: loader);
 
               // Return appropriate widget based on snapshot state

@@ -41,7 +41,6 @@ class SellProduct extends StatelessWidget {
               child: Obx(
                 () => imagesController.productImages.isEmpty
                     ? const VRoundedImage(
-                        fit: BoxFit.cover,
                         width: 80,
                         image:
                             VImages.emptyImage, // Show placeholder if no images
@@ -59,7 +58,6 @@ class SellProduct extends StatelessWidget {
                           return Stack(
                             children: [
                               VRoundedImage(
-                                fit: BoxFit.cover,
                                 isFileImage: true,
                                 width: 80,
                                 imageFile: File(image.path),

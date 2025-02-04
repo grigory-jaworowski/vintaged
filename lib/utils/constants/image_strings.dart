@@ -9,6 +9,7 @@ class VImages {
   static const String docerAnimation = 'assets/images/animations/141594-animation-of-docer.json';
   static const String successfulAnimation = 'assets/images/animations/141397-loading-juggle.json';
   static const String emptyImage = 'assets/images/animations/empty-image.jpg';
+  static String pencilAnimation = 'assets/images/animations/140429-pencil-drawing.json';
 
   // Banners
   static const String promoBanner1 = 'assets/images/banners/premium_sales_banner.jpg';
