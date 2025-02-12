@@ -14,6 +14,8 @@ class ProductImagesController extends GetxController {
 
   // Lists to store additional product images
   final RxList<XFile> productImages = <XFile>[].obs;
+  final RxList<String> existingProductImages = <String>[].obs;
+  final RxList<String> toBeDeletedImages = <String>[].obs;
 
   /// -- Get All Images from product and Variations
   List<String> getAllProductImages(ProductModel product) {
@@ -26,6 +28,10 @@ class ProductImagesController extends GetxController {
     images.addAll(product.images);
 
     return images.toList();
+  }
+
+  Future<void> loadProductImages(List<String> imageUrls) async {
+    existingProductImages.addAll(imageUrls.toSet());
   }
 
   /// -- Show Image Popup
@@ -65,6 +71,11 @@ class ProductImagesController extends GetxController {
     } catch (e) {
       VLoaders.errorSnackBar(title: 'Unexpected Error!', message: 'Something went wrong: $e');
     }
+  }
+
+  Future<void> removeNetworkImage(String image) async {
+    existingProductImages.remove(image);
+    toBeDeletedImages.add(image);
   }
   
   /// Function to remove Product image

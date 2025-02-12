@@ -21,6 +21,10 @@ class VFavouriteIcon extends StatelessWidget {
       () => VCircularIcon(
         icon: controller.isFavourite(productId) ? Iconsax.heart5 : Iconsax.heart,
         color: VColors.red,
+        backgroundColor: VColors.grey,
+        width: 45,
+        height: 45,
+        size: 25,
         onPressed: () => controller.toggleFavoriteProduct(productId),
       ),
     );

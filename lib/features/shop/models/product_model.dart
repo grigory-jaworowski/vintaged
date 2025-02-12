@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
   String id;
-  String? brand;
-  double? co2;
+  String brand;
+  double co2;
   String categoryId;
   String condition;
   String description;
@@ -18,8 +18,8 @@ class ProductModel {
 
   ProductModel(
       {required this.id,
-      this.brand,
-      this.co2,
+      required this.brand,
+      this.co2 = 0,
       required this.categoryId,
       required this.condition,
       required this.description,

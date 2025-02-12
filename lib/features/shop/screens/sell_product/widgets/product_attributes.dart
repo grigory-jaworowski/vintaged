@@ -5,7 +5,7 @@ import 'package:vintaged/utils/constants/colors.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/validators/validators.dart';
-import '../../../controllers/sell_product/sell_product_controller.dart';
+import '../../../controllers/sell_product_controller.dart';
 
 class VSellProductAttributes extends StatelessWidget {
   const VSellProductAttributes({super.key});

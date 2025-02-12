@@ -9,7 +9,7 @@ class VOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
       elevation: 0,
       foregroundColor: VColors.dark,
-      side: const BorderSide(color: VColors.borderPrimary),
+      side: const BorderSide(color: VColors.primary),
       textStyle: const TextStyle(fontSize: 16, color: VColors.black, fontWeight: FontWeight.w600),
       padding: const EdgeInsets.symmetric(vertical: VSizes.buttonHeight, horizontal: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(VSizes.buttonRadius)),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/validators/validators.dart';
-import '../../../controllers/sell_product/sell_product_controller.dart';
+import '../../../controllers/sell_product_controller.dart';
 
 class VSellProductTitleDescription extends StatelessWidget {
   const VSellProductTitleDescription({super.key});

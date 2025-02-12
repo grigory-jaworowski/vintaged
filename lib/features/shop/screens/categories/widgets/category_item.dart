@@ -10,8 +10,10 @@ class VCategoryItem extends StatelessWidget {
     required this.title,
     required this.image,
     required this.onPressed,
+    this.isNetworkImage = true,
   });
 
+  final bool isNetworkImage;
   final String title;
   final String image;
   final VoidCallback onPressed;
@@ -19,7 +21,7 @@ class VCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: VCircularImage(image: image, padding: VSizes.sm, isNetworkImage: true, radius: 0),
+      leading: VCircularImage(image: image, padding: VSizes.sm, isNetworkImage: isNetworkImage, radius: 0),
       title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
       trailing: IconButton(
         onPressed: onPressed, 

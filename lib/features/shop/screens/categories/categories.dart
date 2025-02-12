@@ -35,6 +35,8 @@ class CategoriesScreen extends StatelessWidget {
                         // Fetch subcategories before navigating
                         categoryController.fetchSubCategories(category.id);
 
+                        categoryController.selectedParentCategory.value = category;
+
                         // Navigate to the SubCategoriesScreen
                         Get.to(() => SubCategoriesScreen(category: category));
                       },

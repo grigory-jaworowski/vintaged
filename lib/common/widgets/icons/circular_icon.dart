@@ -24,7 +24,7 @@ class VCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: backgroundColor?.withOpacity(0.7),
+        color: backgroundColor?.withOpacity(0.5),
         borderRadius: BorderRadius.circular(100)
       ),
       child: IconButton(onPressed: onPressed, padding: padding, icon: Icon(icon, color: color, size: size)),

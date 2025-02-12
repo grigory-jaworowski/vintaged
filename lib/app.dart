@@ -13,6 +13,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: VAppTheme.vintagedTheme,
+      debugShowCheckedModeBanner: false,
       initialBinding: GeneralBindings(),
       getPages: AppRoutes.pages,
       home: const Scaffold(backgroundColor: VColors.primaryBackground, body: Center(child: CircularProgressIndicator(color: VColors.primary))),

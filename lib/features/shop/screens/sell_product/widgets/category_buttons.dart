@@ -4,8 +4,7 @@ import 'package:vintaged/features/shop/controllers/category_controller.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/validators/validators.dart';
-import '../../../controllers/sell_product/sell_product_controller.dart';
-import '../../../models/category_model.dart';
+import '../../../controllers/sell_product_controller.dart';
 
 class VCategoryDropdownButtons extends StatelessWidget {
   const VCategoryDropdownButtons({

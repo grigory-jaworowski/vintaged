@@ -9,7 +9,8 @@ class VImages {
   static const String docerAnimation = 'assets/images/animations/141594-animation-of-docer.json';
   static const String successfulAnimation = 'assets/images/animations/141397-loading-juggle.json';
   static const String emptyImage = 'assets/images/animations/empty-image.jpg';
-  static String pencilAnimation = 'assets/images/animations/140429-pencil-drawing.json';
+  static const String pencilAnimation = 'assets/images/animations/140429-pencil-drawing.json';
+  static const String orderCompletedAnimation = "assets/images/animations/order-complete-car-delivery-animation.json";
 
   // Banners
   static const String promoBanner1 = 'assets/images/banners/premium_sales_banner.jpg';
@@ -21,10 +22,8 @@ class VImages {
 
   // Payment Methods
   static const String successfulPaymentIcon = "assets/icons/payment_methods/successful_payment_icon.png";
-  static const String visa = "assets/icons/payment_methods/visa.png";
-  static const String googlePay = "assets/icons/payment_methods/google-pay.png";
   static const String creditCard = "assets/icons/payment_methods/credit-card.png";
-  static const String masterCard = "assets/icons/payment_methods/master-card.png";
+  static const String paypal = "assets/icons/payment_methods/paypal.png";
 
   // Category Logos
   static const String bootIcon = "assets/icons/shop/boot-icon.png";

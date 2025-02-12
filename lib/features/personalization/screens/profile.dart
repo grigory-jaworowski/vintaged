@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
 import 'package:vintaged/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:vintaged/common/widgets/texts/section_heading.dart';
+import 'package:vintaged/features/personalization/screens/change_phone_number.dart';
+import 'package:vintaged/features/personalization/screens/change_username.dart';
 import 'package:vintaged/features/personalization/screens/widgets/profile_menu.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
@@ -11,15 +14,15 @@ import '../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/constants/sizes.dart';
 import '../controllers/user_controller.dart';
-import 'widgets/change_fullname.dart';
-import 'widgets/profile_menu_detail.dart';
+import 'change_fullname.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = UserController.instance;
+    final controller = Get.put(UserController());
+    
     return Scaffold(
       appBar: const VAppBar(showBackArrow: true, title: Text('Profile')),
 
@@ -70,8 +73,7 @@ class ProfileScreen extends StatelessWidget {
               VProfileMenu(
                   title: 'Username',
                   value: controller.user.value.username,
-                  onPressed: () =>
-                      Get.to(() => const VProfileMenuDetail(data: 'Username'))),
+                  onPressed: () => Get.to(() => const ChangeUsername())),
 
               const SizedBox(height: VSizes.spaceBtwItems / 2),
               const Divider(),
@@ -81,48 +83,25 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Personal Information', showActionButton: false),
               const SizedBox(height: VSizes.spaceBtwItems / 2),
 
+              InkWell(
+                child: VProfileMenu(
+                    title: 'User ID',
+                    value: controller.user.value.id,
+                    onPressed: () => {Clipboard.setData(ClipboardData(text: controller.user.value.id))},
+                    icon: Iconsax.copy),
+              ),
               VProfileMenu(
-                  title: 'User ID',
-                  value: controller.user.value.id,
-                  onPressed: () => {},
-                  icon: Iconsax.copy),
-              VProfileMenu(
+                  icon: null,
                   title: 'E-Mail',
-                  value: controller.user.value.email,
-                  onPressed: () =>
-                      Get.to(() => const VProfileMenuDetail(data: 'E-Mail'))),
+                  value: controller.user.value.email),
               VProfileMenu(
                   title: 'Phone Number',
                   value: controller.user.value.phoneNumber,
                   onPressed: () => Get.to(
-                      () => const VProfileMenuDetail(data: 'Phone Number'))),
-              VProfileMenu(
-                  title: 'Gender',
-                  value: 'Male',
-                  onPressed: () =>
-                      Get.to(() => const VProfileMenuDetail(data: 'Gender'))),
-              VProfileMenu(
-                  title: 'Date of Birth',
-                  value: '21.01.2000',
-                  onPressed: () => Get.to(
-                      () => const VProfileMenuDetail(data: 'Date of Birth'))),
-              VProfileMenu(
-                  title: 'City',
-                  value: 'Benidorm',
-                  onPressed: () =>
-                      Get.to(() => const VProfileMenuDetail(data: 'City'))),
-              VProfileMenu(
-                  title: 'Address line',
-                  value: 'Severo Ochoa 29',
-                  onPressed: () => Get.to(
-                      () => const VProfileMenuDetail(data: 'Address line'))),
-              VProfileMenu(
-                  title: 'Postcode',
-                  value: '03503',
-                  onPressed: () =>
-                      Get.to(() => const VProfileMenuDetail(data: 'Postcode'))),
+                      () => const ChangePhoneNumber())),
+              
               const Divider(),
-
+              
               Center(
                 child: TextButton(
                     onPressed: () => controller.deleteAccountWarningPopup(),

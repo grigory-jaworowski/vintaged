@@ -4,8 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/features/personalization/controllers/update_name_controller.dart';
 import 'package:vintaged/utils/validators/validators.dart';
 
-import '../../../../common/widgets/appbar/appbar.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../common/widgets/appbar/appbar.dart';
+import '../../../utils/constants/sizes.dart';
 
 class ChangeFullname extends StatelessWidget {
   const ChangeFullname({super.key});

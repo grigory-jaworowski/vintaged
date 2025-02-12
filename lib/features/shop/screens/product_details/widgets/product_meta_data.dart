@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:vintaged/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:vintaged/features/shop/models/product_model.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 class VProductMetaData extends StatelessWidget {
-  const VProductMetaData({super.key});
+  const VProductMetaData({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +20,27 @@ class VProductMetaData extends StatelessWidget {
           children: [
             // Price
             const SizedBox(height: VSizes.spaceBtwItems / 2),
-            Text('40€', style: Theme.of(context).textTheme.headlineMedium),
+            Text('€${product.price.toStringAsFixed(2)}',
+                style: Theme.of(context).textTheme.headlineMedium),
             const SizedBox(height: VSizes.spaceBtwItems / 2),
             const Divider(color: VColors.grey),
             const SizedBox(height: VSizes.spaceBtwItems),
 
             // Title
-            Text('Leather Jacket', style: Theme.of(context).textTheme.titleLarge),
+            Text(product.title, style: Theme.of(context).textTheme.titleLarge),
             SizedBox(
               height: 20,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Very good', style: Theme.of(context).textTheme.labelLarge),
+                  Text(product.brand,
+                      style: Theme.of(context).textTheme.labelLarge),
                   const VerticalDivider(thickness: 2, color: VColors.grey),
-                  Text('Size M', style: Theme.of(context).textTheme.labelLarge),
+                  Text(product.condition,
+                      style: Theme.of(context).textTheme.labelLarge),
+                  const VerticalDivider(thickness: 2, color: VColors.grey),
+                  Text(product.size,
+                      style: Theme.of(context).textTheme.labelLarge),
                 ],
               ),
             ),
@@ -40,11 +49,12 @@ class VProductMetaData extends StatelessWidget {
             // Description
             VRoundedContainer(
               radius: 10,
+              width: double.infinity,
               borderColor: VColors.grey,
               backgroundColor: VColors.white,
               padding: const EdgeInsets.all(VSizes.sm),
-              child: Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged',
-              style: Theme.of(context).textTheme.bodyLarge),
+              child: Text(product.description,
+                  style: Theme.of(context).textTheme.bodyLarge),
             )
           ],
         )

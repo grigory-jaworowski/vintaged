@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../data/repositories/categories/category_repository.dart';
 import '../../../utils/popups/loaders.dart';
 import '../models/category_model.dart';
+import '../models/product_model.dart';
 
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
@@ -47,6 +48,27 @@ class CategoryController extends GetxController {
           title: 'Unexpected Error!', message: 'Something went wrong: $e');
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  void loadProductCategories(ProductModel product) {
+    // Find the parent category that matches the product's category
+    final parentCategory = parentCategories
+        .firstWhereOrNull((category) => category.id == product.categoryId);
+
+    // Set the selected parent category
+    selectedParentCategory.value = parentCategory;
+
+    // If a parent category exists, fetch subcategories and set the selected subcategory
+    if (parentCategory != null) {
+      fetchSubCategories(parentCategory.id);
+
+      // Find the subcategory that matches the product's subcategory
+      final subCategory = subCategories
+          .firstWhereOrNull((category) => category.id == product.subCategoryId);
+
+      // Set the selected subcategory
+      selectedSubCategory.value = subCategory;
     }
   }
 

@@ -15,19 +15,20 @@ import '../../controllers/all_products_controller.dart';
 class AllProducts extends StatelessWidget {
   const AllProducts({super.key, required this.title, this.query, this.futureMethod});
 
-  // The title of the screen.
+  /// The title of the screen.
   final String title;
 
-  // Represents a query to fetch products from the database.
-  // Use the query parameter to apply custom sorting or filtering criteria.
+  /// Represents a query to fetch products from the database.
+  /// Use the [query] parameter to apply custom sorting or filtering criteria.
   final Query? query;
 
-  // Represents a function to fetch products as a future.
-  // If you use this futureMethod function, it does not allow custom sorting or filtering from the database.
+  /// Represents a function to fetch products as a future.
+  /// If you use this [futureMethod] function, it does not allow custom sorting or filtering from the database.
   final Future<List<ProductModel>>? futureMethod;
 
   @override
   Widget build(BuildContext context) {
+    // Initialize controller for managing product fetching
     final controller = Get.put(AllProductsController());
 
     return Scaffold(
@@ -39,7 +40,7 @@ class AllProducts extends StatelessWidget {
             future: futureMethod ?? controller.fetchProductsByQuery(query),
             builder: (_, snapshot) {
               // Check the state of the FutureBuilder snapshot
-              const loader = VerticalProductShimmer(itemCount: 6);
+              const loader = VerticalProductShimmer(itemCount: 4);
               final widget = VCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot, loader: loader);
 
               // Return appropriate widget based on snapshot state
@@ -69,8 +70,9 @@ class VSortableProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize controller for managing product sorting
     final controller = Get.put(AllProductsController());
-
+    // Assign the products to the controller
     controller.assignProducts(products);
 
     return Column(
@@ -88,7 +90,7 @@ class VSortableProductList extends StatelessWidget {
                     // Sort products based on the selected option
                     controller.sortProducts(value!);
                   },
-                  items: ['Name', 'Higher Price', 'Lower Price', 'Popularity'].map((option) {
+                  items: ['Name', 'Higher Price', 'Lower Price'].map((option) {
                     return DropdownMenuItem<String>(
                       value: option,
                       child: Text(option),
@@ -101,7 +103,7 @@ class VSortableProductList extends StatelessWidget {
         ),
         const SizedBox(height: VSizes.spaceBtwSections),
 
-        // Product Grid Section
+        /// Product Grid Section
         Obx(
           () => VGridLayout(
             itemCount: controller.products.length,
@@ -109,7 +111,7 @@ class VSortableProductList extends StatelessWidget {
           ),
         ),
 
-        // Bottom spacing to accommodate the navigation bar
+        /// Bottom spacing to accommodate the navigation bar
         const SizedBox(height: 56 + VSizes.defaultSpace),
       ],
     );

@@ -7,7 +7,6 @@ import '../../../../../common/widgets/custom_shapes/curved_edges/curved_edges_wi
 import '../../../../../common/widgets/image_widgets/rounded_image.dart';
 import '../../../../../common/widgets/products/product_card/favourite_icon.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../controllers/product/product_images_controller.dart';
 import '../../../models/product_model.dart';

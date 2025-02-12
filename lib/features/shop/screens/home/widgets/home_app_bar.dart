@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vintaged/common/widgets/appbar/appbar.dart';
-import 'package:vintaged/common/widgets/icons/icon_with_counter.dart';
 import 'package:vintaged/common/widgets/shimmers/shimmer_effect.dart';
 import 'package:vintaged/features/personalization/controllers/user_controller.dart';
 import 'package:vintaged/utils/constants/colors.dart';
@@ -23,18 +22,13 @@ class VHomeAppBar extends StatelessWidget {
           Obx(() {
             if (controller.profileLoading.value) {
               // Display shimmer loader while user profile is being loaded
-              return const VShimmerEffect(width: 80, height: 15);
+              return const VShimmerEffect(width: 120, height: 20);
             } else {
               return Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: VColors.white));
             }
           }),
         ],
       ),
-      actions: [
-        VIconWithCounter(
-          onPressed: () {}
-        )
-      ],
     );
   }
 }

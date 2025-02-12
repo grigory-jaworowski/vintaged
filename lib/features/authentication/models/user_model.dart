@@ -1,25 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../personalization/models/address_model.dart';
+
 class UserModel {
-  final String id;
+  String id;
   String firstName;
   String lastName;
-  final String username;
-  final String email;
+  String username;
+  String email;
   String phoneNumber;
   String profilePicture;
-  final List<String>? products;
+  AddressModel? address;
 
-  UserModel({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.username,
-    required this.phoneNumber,
-    required this.email,
-    required this.profilePicture,
-    this.products,
-  });
+  UserModel(
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.username,
+      required this.phoneNumber,
+      required this.email,
+      required this.profilePicture,
+      this.address});
 
   // Helper function to get full name
   String get fullName => '$firstName $lastName';
@@ -35,19 +36,18 @@ class UserModel {
       username: '',
       phoneNumber: '',
       email: '',
-      profilePicture: '',
-      products: []);
+      profilePicture: '');
 
   // Convert model to JSON structure for storing data in Firebase
   Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,
       'LastName': lastName,
-      'UserName': username,
+      'Username': username,
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
-      'Products': products
+      'Address': address,
     };
   }
 
@@ -60,11 +60,13 @@ class UserModel {
           id: document.id,
           firstName: data['FirstName'] ?? '',
           lastName: data['LastName'] ?? '',
-          username: data['UserName'] ?? '',
+          username: data['Username'] ?? '',
           email: data['Email'] ?? '',
           phoneNumber: data['PhoneNumber'] ?? '',
           profilePicture: data['ProfilePicture'] ?? '',
-          products: data['Products'] != null ? List<String>.from(data['Products']) : []);
+          address: data['Address'] != null
+              ? AddressModel.fromMap(data['Address'])
+              : AddressModel.empty());
     } else {
       return UserModel.empty();
     }

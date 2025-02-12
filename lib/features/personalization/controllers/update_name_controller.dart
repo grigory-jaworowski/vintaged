@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vintaged/data/repositories/user/user_repository.dart';
 import 'package:vintaged/features/personalization/controllers/user_controller.dart';
-import 'package:vintaged/features/personalization/screens/profile.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';
 import 'package:vintaged/utils/popups/full_screen_loader.dart';
 import 'package:vintaged/utils/popups/loaders.dart';
@@ -58,11 +57,11 @@ class UpdateNameController extends GetxController{
       // Remove loader
       VFullScreenLoader.stopLoading();
 
+      Get.back();
+      
       // Show success message
       VLoaders.successSnackBar(title: 'Congratulations!', message: 'Your name has been updated successfully!');
-
-      // Move to previous screen
-      Get.off(() => const ProfileScreen());
+      
     } catch (e) {
       VFullScreenLoader.stopLoading();
       VLoaders.errorSnackBar(title: 'Unexpected error!', message: e.toString());

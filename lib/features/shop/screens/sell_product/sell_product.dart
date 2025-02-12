@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/image_widgets/rounded_image.dart';
@@ -11,10 +10,8 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../common/widgets/icons/circular_icon.dart';
-import '../../../../common/widgets/success_screen/success_screen.dart';
-import '../../../../navigation_menu.dart';
 import '../../controllers/product/product_images_controller.dart';
-import '../../controllers/sell_product/sell_product_controller.dart';
+import '../../controllers/sell_product_controller.dart';
 import 'widgets/category_buttons.dart';
 import 'widgets/product_attributes.dart';
 import 'widgets/title_description.dart';
@@ -41,6 +38,7 @@ class SellProduct extends StatelessWidget {
               child: Obx(
                 () => imagesController.productImages.isEmpty
                     ? const VRoundedImage(
+                        height: 80,
                         width: 80,
                         image:
                             VImages.emptyImage, // Show placeholder if no images
@@ -59,6 +57,7 @@ class SellProduct extends StatelessWidget {
                             children: [
                               VRoundedImage(
                                 isFileImage: true,
+                                height: 80,
                                 width: 80,
                                 imageFile: File(image.path),
                               ),

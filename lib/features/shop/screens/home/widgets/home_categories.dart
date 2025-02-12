@@ -7,6 +7,9 @@ import 'package:vintaged/features/shop/controllers/category_controller.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
+import '../../../../../data/repositories/products/product_repository.dart';
+import '../../all_products/all_products.dart';
+
 class VHomeCategories extends StatelessWidget {
   const VHomeCategories({
     super.key,
@@ -42,7 +45,15 @@ class VHomeCategories extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, index) {
                     final category = controller.featuredCategories[index];
-                    return VerticalImageText(image: category.image, title: category.name, onTap: (){});
+                    return VerticalImageText(image: category.image, title: category.name, onTap: () {
+                          Get.to(() => AllProducts(
+                                title: category.name,
+                                futureMethod: ProductRepository.instance
+                                    .getProductsByCategory(
+                                        categoryId: category.id,
+                                        field: 'SubCategoryId'),
+                              ));
+                        },);
                   }
                 ),
               );

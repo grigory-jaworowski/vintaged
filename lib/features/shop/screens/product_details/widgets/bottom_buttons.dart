@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vintaged/features/shop/screens/payment/payment.dart';
-import 'package:vintaged/features/shop/screens/product_details/widgets/make_offer.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
-import '../../../../../utils/constants/colors.dart';
+import '../../../models/product_model.dart';
 
 class VBottomButtons extends StatelessWidget {
-  const VBottomButtons({
-    super.key,
-    required this.color,
-    required this.borderColor
-  });
+  const VBottomButtons(
+      {super.key,
+      required this.color,
+      required this.borderColor,
+      required this.product});
 
   final Color color;
   final Color borderColor;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: VSizes.defaultSpace, vertical: VSizes.defaultSpace / 2),
+      padding: const EdgeInsets.symmetric(
+          horizontal: VSizes.defaultSpace, vertical: VSizes.defaultSpace / 2),
       decoration: BoxDecoration(
         color: color,
-        border: Border(
-          top: BorderSide(
-            color: borderColor,
-            width: 2,
-          )
-        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,26 +31,12 @@ class VBottomButtons extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: ElevatedButton(
-                onPressed: () => Get.to(() => const VMakeOffer(data: 'Make an offer',)),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(VSizes.md),
-                  backgroundColor: VColors.white,
-                  foregroundColor: VColors.dark
-                ),
-                child: const Text('Make Offer'),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 3),
-              child: ElevatedButton(
-                onPressed: () => Get.to(() => const PaymentScreen()),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(VSizes.md),
-                ),
-                child: const Text('Buy')
-              ),
+                  onPressed: () =>
+                      Get.to(() => PaymentScreen(product: product)),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(VSizes.md),
+                  ),
+                  child: const Text('Buy')),
             ),
           )
         ],

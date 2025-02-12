@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vintaged/common/widgets/appbar/appbar.dart';
 import 'package:vintaged/features/shop/models/product_model.dart';
-import '../../../../common/widgets/image_widgets/circular_image.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../personalization/screens/profile.dart';
+import '../../controllers/product/product_details_controller.dart';
 import 'widgets/bottom_buttons.dart';
-import 'widgets/co2_add_to_cart.dart';
+import 'widgets/owner_details.dart';
+import 'widgets/total_co2.dart';
 import 'widgets/product_detail_image_slider.dart';
 import 'widgets/product_meta_data.dart';
 
@@ -19,47 +17,62 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: const VBottomButtons(color: VColors.white, borderColor: VColors.darkGrey),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Product image slider
-              VProductImageSlider(product: product),
-      
-              // Product details
-              Padding(
-                padding: const EdgeInsets.only(right: VSizes.defaultSpace, left: VSizes.defaultSpace, bottom: VSizes.defaultSpace),
-                child: Column(
-                  children: [
-                    // Seller
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: const VCircularImage(image: VImages.testAppLogo),
-                      title: Text('Name Surname', style: Theme.of(context).textTheme.bodyLarge!.apply(color: VColors.black)),
-                      trailing: TextButton(
-                        onPressed: () => Get.to(() => const ProfileScreen()),
-                        child: const Text('Check Profile'), 
-                      ),
+    final productDetailsController = Get.put(ProductDetailsController());
+
+    return FutureBuilder(
+      future:
+          productDetailsController.fetchOwnerRecord(product.owner).then((_) {
+        return productDetailsController.setTotalCO2Value(
+            product.weight, product.co2);
+      }),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator(color: VColors.primary, backgroundColor: VColors.white));
+        }
+
+        return SafeArea(
+          child: Scaffold(
+            bottomNavigationBar: VBottomButtons(
+              product: product,
+              color: VColors.white,
+              borderColor: VColors.darkGrey,
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // Product image slider
+                  VProductImageSlider(product: product),
+
+                  // Product details
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: VSizes.defaultSpace,
+                      vertical: VSizes.defaultSpace,
                     ),
-                    const Divider(color: VColors.grey),
-      
-                    // CO2 & Add to cart
-                    const VCO2AddToCart(),
-                    const Divider(color: VColors.grey),
-      
-                    // Price, Title, Description
-                    const VProductMetaData(),
-      
-                  ],
-                ),
-              )
-            ],
-             
+                    child: Column(
+                      children: [
+                        // Seller
+                        const VOwnerDetails(),
+                        const Divider(color: VColors.grey),
+
+                        // CO2 & Add to cart
+                        const SizedBox(height: VSizes.spaceBtwItems / 2),
+                        VTotalCO2(product: product),
+                        const SizedBox(height: VSizes.spaceBtwItems / 2),
+
+                        const Divider(color: VColors.grey),
+
+                        // Price, Title, Description
+                        VProductMetaData(product: product),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

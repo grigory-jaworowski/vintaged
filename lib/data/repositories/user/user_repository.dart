@@ -59,6 +59,30 @@ class UserRepository extends GetxController {
     }
   }
 
+  Future<UserModel> fetchUserById(String id) async {
+    try {
+      final documentSnapshot = await _db
+          .collection("Users")
+          .doc(id)
+          .get();
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapshot(documentSnapshot);
+      } else {
+        return UserModel.empty();
+      }
+    } on FirebaseAuthException catch (e) {
+      throw VFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw VFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const VFormatException();
+    } on PlatformException catch (e) {
+      throw VPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   // Function to update user data in Firestore
   Future<void> updateUserDetails(UserModel updatedUser) async {
     try {
@@ -86,29 +110,6 @@ class UserRepository extends GetxController {
           .collection("Users")
           .doc(AuthenticationRepository.instance.authUser?.uid)
           .update(json);
-    } on FirebaseAuthException catch (e) {
-      throw VFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw VFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const VFormatException();
-    } on PlatformException catch (e) {
-      throw VPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
-
-  // Add newly created product to user profile
-  Future<void> addUserProduct(String productId) async {
-    try {
-      await _db
-          .collection("Users")
-          .doc(AuthenticationRepository.instance.authUser?.uid)
-          .update({
-        'Products':
-            FieldValue.arrayUnion([productId])
-      });
     } on FirebaseAuthException catch (e) {
       throw VFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

@@ -66,6 +66,21 @@ class Validator {
     return null;
   }
 
+  static String? validatePostalCode(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Postal Code is required.';
+    }
+
+    // Regular expression to match exactly 5 digits
+    final postalCodeRegExp = RegExp(r'^\d{5}$');
+
+    if (!postalCodeRegExp.hasMatch(value)) {
+      return 'Invalid Postal Code (5 digits required).';
+    }
+
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';

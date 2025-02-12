@@ -7,7 +7,9 @@ import 'package:vintaged/common/widgets/image_widgets/circular_image.dart';
 import 'package:vintaged/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:vintaged/common/widgets/texts/section_heading.dart';
 import 'package:vintaged/features/personalization/controllers/user_controller.dart';
+import 'package:vintaged/features/personalization/screens/add_new_address.dart';
 import 'package:vintaged/features/personalization/screens/profile.dart';
+import 'package:vintaged/features/shop/screens/my_items/my_items.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
@@ -21,7 +23,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final controller = UserController.instance;
 
     return Scaffold(
@@ -32,7 +33,12 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Appbar
-                  VAppBar(title: Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: VColors.white))),
+                  VAppBar(
+                      title: Text('Account',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .apply(color: VColors.white))),
 
                   // User Profile Card
                   ListTile(
@@ -49,12 +55,19 @@ class SettingsScreen extends StatelessWidget {
                               image: image,
                               isNetworkImage: networkImage.isNotEmpty);
                     }),
-                    title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: VColors.white)),
-                    subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: VColors.white)),
+                    title: Text(controller.user.value.fullName,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .apply(color: VColors.white)),
+                    subtitle: Text(controller.user.value.email,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .apply(color: VColors.white)),
                     trailing: IconButton(
-                      onPressed: () => Get.to(() => const ProfileScreen()), 
-                      icon: const Icon(Iconsax.edit, color: VColors.white)
-                    ),
+                        onPressed: () => Get.to(() => const ProfileScreen()),
+                        icon: const Icon(Iconsax.edit, color: VColors.white)),
                   ),
                   const SizedBox(height: VSizes.spaceBtwSections),
                 ],
@@ -66,51 +79,55 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(VSizes.defaultSpace),
               child: Column(
                 children: [
-                  const VSectionHeading(title: 'Account Settings', showActionButton: false),
+                  const VSectionHeading(
+                      title: 'Account Settings', showActionButton: false),
                   const SizedBox(height: VSizes.spaceBtwItems),
-
-                 const VSettingsMenuTile(
+                  VSettingsMenuTile(
                     icon: Iconsax.directbox_notif,
                     title: 'My Items',
                     subTitle: 'Browse your items for sale',
+                  onPressed: () => Get.to(() => const MyItemsScreen())),
+                  ListTile(
+                    leading: const Icon(Iconsax.shopping_cart,
+                        size: 28, color: VColors.primary),
+                    title: Text('My Address',
+                        style: Theme.of(context).textTheme.titleMedium),
+                    subtitle: Text('Necessarry for CO2 calculation and payment',
+                        style: Theme.of(context).textTheme.labelMedium),
+                    onTap: () => Get.to(() => const AddNewAddressScreen()),
                   ),
-
                   VSettingsMenuTile(
-                    icon: Iconsax.shopping_cart,
-                    title: 'My Orders',
-                    subTitle: 'In-progress and Completed Orders',
-                    onPressed: () => Get.to(() => const OrderScreen())
-                  ),
-
-                  const VSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Browse all your notifications'),
-
-                  const VSettingsMenuTile(icon: Iconsax.bank, title: 'Payment', subTitle: 'Add your payment methods'),
-                  
+                      icon: Iconsax.shopping_cart,
+                      title: 'My Orders',
+                      subTitle: 'In-progress and Completed Orders',
+                      onPressed: () => Get.to(() => const OrderScreen())),
                   const SizedBox(height: VSizes.spaceBtwSections),
-
-                  const VSectionHeading(title: 'App Settings', showActionButton: false),
+                  const VSectionHeading(
+                      title: 'App Settings', showActionButton: false),
                   const SizedBox(height: VSizes.spaceBtwItems),
-
                   VSettingsMenuTile(
-                    icon: Iconsax.location, title: 'Location',
-                    subTitle: 'Calculate CO2 production based on your current location',
-                    trailing: Switch(value: true, onChanged: (value){}),
+                    icon: Iconsax.location,
+                    title: 'Location',
+                    subTitle:
+                        'Calculate CO2 production based on your current location',
+                    trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-
                   VSettingsMenuTile(
-                    icon: Iconsax.location, title: 'Notifications',
+                    icon: Iconsax.location,
+                    title: 'Notifications',
                     subTitle: 'Turn on or off notifications from the app',
-                    trailing: Switch(value: true, onChanged: (value){}),
+                    trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-
                   const SizedBox(height: VSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      style: OutlinedButton.styleFrom(side: const BorderSide(width: 1, color: VColors.primary)),
-                      onPressed: () => AuthenticationRepository.instance.logout(),
-                      child: const Text('Logout')
-                    ),
+                        style: OutlinedButton.styleFrom(
+                            side: const BorderSide(
+                                width: 1, color: VColors.primary)),
+                        onPressed: () =>
+                            AuthenticationRepository.instance.logout(),
+                        child: const Text('Logout')),
                   ),
                   const SizedBox(height: VSizes.spaceBtwSections * 2.5),
                 ],

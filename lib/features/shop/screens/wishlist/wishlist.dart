@@ -11,8 +11,6 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/cloud_helper_functions.dart';
 import '../../../../utils/loaders/animation_loader.dart';
 import '../../controllers/favourites_controller.dart';
-import '../../models/product_model.dart';
-import '../home/home.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -21,7 +19,6 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: VAppBar(
-        showBackArrow: true,
         title: Text('Whishlist', style: Theme.of(context).textTheme.headlineMedium),
       ),
 
