@@ -36,6 +36,7 @@ class VColors {
   static const Color info = Color(0xFF5BC0DE); // Soft blue (vintage calm)
 
   // Neutral Shades
+  static const Color red = Color(0xFFD9534F); // Rich red
   static const Color black = Color(0xFF2C2C2C); // Dark charcoal (classic neutral)
   static const Color darkerGrey = Color(0xFF535353); // Muted grey (aged tone)
   static const Color darkGrey = Color(0xFF787878); // Slightly warm dark grey (retro)
@@ -43,6 +44,8 @@ class VColors {
   static const Color softGrey = Color(0xFFD3D3D3); // Soft light grey (faded tone)
   static const Color lightGrey = Color(0xFFE6E6E6); // Very soft grey (aged paper or fabric)
   static const Color white = Color(0xFFFAF9F6); // White
+  static const Color brown = Color(0xFFAD722D);
+  static const Color blue = Color(0xFF5BC0DE); // Soft blue (vintage calm)
 }
 
 

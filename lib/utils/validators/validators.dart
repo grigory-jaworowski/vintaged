@@ -1,8 +1,24 @@
+import '../../features/shop/models/category_model.dart';
+
 class Validator {
   //Empty text validation
-  static String? validateEmptyText (String? fieldName, String? value) {
+  static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return '$fieldName is required';
+    }
+    return null;
+  }
+
+  static String? validateCategories(String? fieldName, CategoryModel? value) {
+    if (value == null) {
+      return 'Please select $fieldName';
+    }
+    return null;
+  }
+
+  static String? validateCondition(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please select $fieldName';
     }
     return null;
   }
@@ -50,6 +66,21 @@ class Validator {
     return null;
   }
 
+  static String? validatePostalCode(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Postal Code is required.';
+    }
+
+    // Regular expression to match exactly 5 digits
+    final postalCodeRegExp = RegExp(r'^\d{5}$');
+
+    if (!postalCodeRegExp.hasMatch(value)) {
+      return 'Invalid Postal Code (5 digits required).';
+    }
+
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';
@@ -60,6 +91,20 @@ class Validator {
 
     if (!phoneRegExp.hasMatch(value)) {
       return 'Invalid phone number format (9 digits required).';
+    }
+
+    return null;
+  }
+
+  //Empty text, right amount
+  static String? validateOffer(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required';
+    }
+    final amountRegExp = RegExp(r'^\d{3}$');
+
+    if (!amountRegExp.hasMatch(value)) {
+      return 'Invalid amount.';
     }
 
     return null;

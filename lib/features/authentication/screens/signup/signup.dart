@@ -20,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
               Text(VTexts.signupTitle, style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: VSizes.spaceBtwSections),
 
-              //Form
+              // Form
               const VSignUpForm(),
             ],
           )

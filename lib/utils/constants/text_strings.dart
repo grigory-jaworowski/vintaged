@@ -53,6 +53,5 @@ class VTexts {
 
   static const String homeAppbarTitle = 'Find your ideal piece today';
   static const String homeAppbarSubTitle = 'Grigory Volkov';
-  
 }
 

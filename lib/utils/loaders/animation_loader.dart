@@ -42,7 +42,7 @@ class VAnimationLoaderWidget extends StatelessWidget {
                     style: OutlinedButton.styleFrom(backgroundColor: VColors.dark),
                     child: Text(
                       actionText!,
-                      style: Theme.of(context).textTheme.bodyMedium!.apply(color: VColors.light),
+                      style: Theme.of(context).textTheme.bodyMedium!.apply(color: VColors.white),
                     ),
                   ),
                 )

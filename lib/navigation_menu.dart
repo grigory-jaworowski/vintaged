@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vintaged/features/personalization/screens/settings.dart';
 import 'package:vintaged/features/shop/screens/home/home.dart';
+import 'package:vintaged/features/shop/screens/wishlist/wishlist.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-class HomeMenu extends StatelessWidget {
-  const HomeMenu({super.key});
+import 'features/shop/screens/sell_product/sell_product.dart';
+import 'features/shop/screens/categories/categories.dart';
+
+class NavigationMenu extends StatelessWidget {
+  const NavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+    final controller = Get.put(NavigationController());
 
     return Scaffold(
       bottomNavigationBar: Obx(
@@ -22,6 +27,7 @@ class HomeMenu extends StatelessWidget {
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home, color: VColors.black), label: 'Home'),
             NavigationDestination(icon: Icon(Iconsax.shop, color: VColors.black), label: 'Market'),
+            NavigationDestination(icon: Icon(Iconsax.add_circle, color: VColors.black), label: 'Sell'),
             NavigationDestination(icon: Icon(Iconsax.heart, color: VColors.black), label: 'Wishlist'),
             NavigationDestination(icon: Icon(Iconsax.user, color: VColors.black), label: 'Profile'),
           ]
@@ -32,8 +38,8 @@ class HomeMenu extends StatelessWidget {
   }
 }
 
-class HomeController extends GetxController {
+class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
-
-  final screens = [const HomeScreen(), Container(color: Colors.blue,), Container(color: Colors.blueAccent,), Container(color: Colors.blueGrey,)];
+  
+  final screens = [const HomeScreen(), const CategoriesScreen(), const SellProduct(), const WishlistScreen(), const SettingsScreen()];
 }

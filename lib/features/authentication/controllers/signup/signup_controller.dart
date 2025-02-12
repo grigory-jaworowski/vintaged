@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vintaged/data/repositories/authentication/authentication_repository.dart';
-import 'package:vintaged/data/repositories/authentication/user_repository.dart';
+import 'package:vintaged/data/repositories/user/user_repository.dart';
 import 'package:vintaged/features/authentication/models/user_model.dart';
 import 'package:vintaged/features/authentication/screens/signup/verify_email.dart';
 import 'package:vintaged/utils/constants/image_strings.dart';

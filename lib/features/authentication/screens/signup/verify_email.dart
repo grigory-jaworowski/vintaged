@@ -29,7 +29,7 @@ class VerifyEmailScreen extends StatelessWidget {
           child: Column(
             children: [
               // Image
-              Image( image: const AssetImage(VImages.testAppLogo), width: VHelperFunctions.screenWidth() * 0.6),
+              Image(image: const AssetImage(VImages.testAppLogo), width: VHelperFunctions.screenWidth() * 0.6),
               const SizedBox(height: VSizes.spaceBtwSections),
 
               // Title & Subtitle

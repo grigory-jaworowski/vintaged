@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
           padding: VSpacingStyles.paddingWidthAppBarHeight,
           child: Column(
             children: [
-              ///Logo, Title & Sub-Title
+              // Logo, Title & Sub-Title
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: VSizes.spaceBtwSections),
                   child: Column(
                     children: [
-                      //Email
+                      // Email
                       TextFormField(
                         controller: controller.email,
                         validator: (value) => Validator.validateEmail(value),
@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: VSizes.spaceBtwInputFields),
                   
-                      //Password
+                      // Password
                       Obx(
                         () => TextFormField(
                           validator: (value) => Validator.validateEmptyText('Password', value),
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: VSizes.spaceBtwInputFields/2),
                   
-                      //Remember Me & Forget Password
+                      // Remember Me & Forget Password
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                               Obx(
                                 () => Checkbox(
                                   value: controller.rememberMe.value,
-                                  onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value
+                                  onChanged: (value) => controller.rememberMe.value = value!
                                 ),
                               ),
                               const Text(VTexts.rememberMe),
@@ -92,11 +92,11 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: VSizes.spaceBtwSections),
                   
-                      //Sign In Button
+                      // Sign In Button
                       SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => controller.emailAndPasswordSignIn(), child: const Text(VTexts.signIn))),
                       const SizedBox(height: VSizes.spaceBtwItems),
                   
-                      //Create Account Button
+                      // Create Account Button
                       SizedBox(width: double.infinity, child: OutlinedButton(onPressed: () => Get.to(() => const SignUpScreen()), child: const Text(VTexts.createAccount))),
                       const SizedBox(height: VSizes.spaceBtwSections),
                     ],
