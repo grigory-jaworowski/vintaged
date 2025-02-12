@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vintaged/features/shop/models/product_model.dart';
+import 'package:vintaged/features/market/models/product_model.dart';
 
-import '../../../../features/shop/controllers/my_items_controller.dart';
+import '../../../../features/market/controllers/my_items_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../icons/circular_icon.dart';
 

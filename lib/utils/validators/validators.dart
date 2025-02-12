@@ -1,4 +1,4 @@
-import '../../features/shop/models/category_model.dart';
+import '../../features/market/models/category_model.dart';
 
 class Validator {
   //Empty text validation

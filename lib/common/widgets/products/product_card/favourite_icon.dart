@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/shop/controllers/favourites_controller.dart';
+import '../../../../features/market/controllers/favourites_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../icons/circular_icon.dart';
 

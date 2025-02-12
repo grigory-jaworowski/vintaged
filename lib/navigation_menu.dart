@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vintaged/features/personalization/screens/settings.dart';
-import 'package:vintaged/features/shop/screens/home/home.dart';
-import 'package:vintaged/features/shop/screens/wishlist/wishlist.dart';
+import 'package:vintaged/features/market/screens/home/home.dart';
+import 'package:vintaged/features/market/screens/wishlist/wishlist.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 
-import 'features/shop/screens/sell_product/sell_product.dart';
-import 'features/shop/screens/categories/categories.dart';
+import 'features/market/screens/sell_product/sell_product.dart';
+import 'features/market/screens/categories/categories.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});

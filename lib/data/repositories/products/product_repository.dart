@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vintaged/data/repositories/authentication/authentication_repository.dart';
 
-import '../../../features/shop/models/product_model.dart';
+import '../../../features/market/models/product_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';

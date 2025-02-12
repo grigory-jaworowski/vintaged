@@ -2,8 +2,8 @@ flutter_native_splash:
   web: false
 
   color: '#FAF9F6'
-  image: 'assets\logos\test-logo.png'
+  image: 'assets\logos\app-logo.png'
 
   android_12:
     color: '#FAF9F6'
-    image: 'assets\logos\test-logo.png'
+    image: 'assets\logos\app-logo.png'
