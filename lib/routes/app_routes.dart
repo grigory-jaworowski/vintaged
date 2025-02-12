@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:vintaged/features/personalization/screens/add_new_address.dart';
-import 'package:vintaged/features/shop/screens/order/order.dart';
+import 'package:vintaged/features/market/screens/order/order.dart';
 import 'package:vintaged/routes/routes.dart';
 
 class AppRoutes {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vintaged/features/shop/models/product_model.dart';
+import 'package:vintaged/features/market/models/product_model.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../image_widgets/rounded_image.dart';

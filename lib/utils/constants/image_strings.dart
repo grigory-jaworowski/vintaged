@@ -1,5 +1,5 @@
 class VImages {
-  static const String testAppLogo = 'assets/logos/test-logo.png';
+  static const String testAppLogo = 'assets/logos/app-logo.png';
   static const String googleIcon = 'assets/logos/google-icon.png';
   static const String facebookIcon = 'assets/logos/facebook-icon.png';
   static const String userIcon = 'assets/logos/user.png';
@@ -10,7 +10,7 @@ class VImages {
   static const String successfulAnimation = 'assets/images/animations/141397-loading-juggle.json';
   static const String emptyImage = 'assets/images/animations/empty-image.jpg';
   static const String pencilAnimation = 'assets/images/animations/140429-pencil-drawing.json';
-  static const String orderCompletedAnimation = "assets/images/animations/order-complete-car-delivery-animation.json";
+  static const String orderCompletedAnimation = 'assets/images/animations/order-complete-car-delivery-animation.json';
 
   // Banners
   static const String promoBanner1 = 'assets/images/banners/premium_sales_banner.jpg';

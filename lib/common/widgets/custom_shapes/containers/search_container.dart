@@ -5,7 +5,7 @@ import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 import 'package:vintaged/utils/device/device_utility.dart';
 
-import '../../../../features/shop/screens/search/search.dart';
+import '../../../../features/market/screens/search/search.dart';
 
 class VSearchContainer extends StatelessWidget {
   const VSearchContainer({

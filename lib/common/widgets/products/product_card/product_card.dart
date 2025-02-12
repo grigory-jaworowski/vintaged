@@ -4,8 +4,8 @@ import 'package:vintaged/common/widgets/custom_shapes/containers/rounded_contain
 import 'package:vintaged/common/widgets/image_widgets/rounded_image.dart';
 import 'package:vintaged/common/widgets/products/product_card/delete_icon.dart';
 import 'package:vintaged/common/widgets/texts/product_title_text.dart';
-import 'package:vintaged/features/shop/models/product_model.dart';
-import 'package:vintaged/features/shop/screens/product_details/product_details.dart';
+import 'package:vintaged/features/market/models/product_model.dart';
+import 'package:vintaged/features/market/screens/product_details/product_details.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import 'favourite_icon.dart';

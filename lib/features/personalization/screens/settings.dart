@@ -9,14 +9,14 @@ import 'package:vintaged/common/widgets/texts/section_heading.dart';
 import 'package:vintaged/features/personalization/controllers/user_controller.dart';
 import 'package:vintaged/features/personalization/screens/add_new_address.dart';
 import 'package:vintaged/features/personalization/screens/profile.dart';
-import 'package:vintaged/features/shop/screens/my_items/my_items.dart';
+import 'package:vintaged/features/market/screens/my_products/my_products.dart';
 import 'package:vintaged/utils/constants/colors.dart';
 import 'package:vintaged/utils/constants/sizes.dart';
 
 import '../../../common/widgets/shimmers/shimmer_effect.dart';
 import '../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../utils/constants/image_strings.dart';
-import '../../shop/screens/order/order.dart';
+import '../../market/screens/order/order.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -86,7 +86,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.directbox_notif,
                     title: 'My Items',
                     subTitle: 'Browse your items for sale',
-                  onPressed: () => Get.to(() => const MyItemsScreen())),
+                  onPressed: () => Get.to(() => const MyProductsScreen())),
                   ListTile(
                     leading: const Icon(Iconsax.shopping_cart,
                         size: 28, color: VColors.primary),
