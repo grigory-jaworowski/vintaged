@@ -57,7 +57,7 @@ class ClimatiqApiService extends GetxController {
         body: jsonEncode({
           "route": [
             {
-              "location": {"query": "Spain", "postal_code": ownerPostalCode}
+              "location": {"query": VAPIs.spain, "postal_code": ownerPostalCode}
             },
             {
               "transport_mode": "road",
@@ -70,10 +70,10 @@ class ClimatiqApiService extends GetxController {
               }
             },
             {
-              "location": {"query": "Spain", "postal_code": buyerPostalCode}
+              "location": {"query": VAPIs.spain, "postal_code": buyerPostalCode}
             }
           ],
-          "cargo": {"weight": weight, "weight_unit": "kg"}
+          "cargo": {"weight": weight, "weight_unit": VAPIs.climatiqReusedClothesWeightUnitParam}
         }),
       );
 
