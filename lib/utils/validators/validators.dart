@@ -95,18 +95,4 @@ class Validator {
 
     return null;
   }
-
-  //Empty text, right amount
-  static String? validateOffer(String? fieldName, String? value) {
-    if (value == null || value.isEmpty) {
-      return '$fieldName is required';
-    }
-    final amountRegExp = RegExp(r'^\d{3}$');
-
-    if (!amountRegExp.hasMatch(value)) {
-      return 'Invalid amount.';
-    }
-
-    return null;
-  }
 }

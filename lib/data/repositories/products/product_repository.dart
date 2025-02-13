@@ -173,22 +173,6 @@ class ProductRepository extends GetxController {
     }
   }
 
-  Future<void> deleteProductImage(String productId, String imageUrl) async {
-    try {
-      await _db.collection('Products').doc(productId).update({
-        'Images': FieldValue.arrayRemove([imageUrl]),
-      });
-    } on FirebaseException catch (e) {
-      throw VFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const VFormatException();
-    } on PlatformException catch (e) {
-      throw VPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong while deleting the image. Please try again';
-    }
-  }
-
   Future<void> deleteImageFromStorage(String imageUrl) async {
     try {
       // Extract image path from the URL

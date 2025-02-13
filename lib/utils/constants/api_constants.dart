@@ -9,5 +9,5 @@ class VAPIs {
 
   // Climatiq activity parameters
   static const String climatiqReusedClothesWeightUnitParam = "kg";
-
+ static const String spain = "Spain";
 }

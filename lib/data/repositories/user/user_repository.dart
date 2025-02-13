@@ -83,26 +83,6 @@ class UserRepository extends GetxController {
     }
   }
 
-  // Function to update user data in Firestore
-  Future<void> updateUserDetails(UserModel updatedUser) async {
-    try {
-      await _db
-          .collection("Users")
-          .doc(updatedUser.id)
-          .update(updatedUser.toJson());
-    } on FirebaseAuthException catch (e) {
-      throw VFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw VFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const VFormatException();
-    } on PlatformException catch (e) {
-      throw VPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
-
   // Update single field
   Future<void> updateSingleField(Map<String, dynamic> json) async {
     try {
